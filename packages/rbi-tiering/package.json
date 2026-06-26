@@ -1,0 +1,21 @@
+{
+  "name": "@prahari/rbi-tiering",
+  "version": "0.1.0",
+  "description": "Pure RBI MRM 2026 risk-based model tiering engine (Para 17-20, 52).",
+  "type": "module",
+  "license": "Apache-2.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "engines": { "node": ">=20.0.0" },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "vitest": "^4.0.18"
+  }
+}

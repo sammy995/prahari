@@ -1,0 +1,50 @@
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Build output
+dist/
+build/
+out/
+*.tsbuildinfo
+
+# Environment & secrets — NEVER commit
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Test / coverage
+coverage/
+.nyc_output/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local data / scratch
+*.local
+tmp/
+scratch/
+
+# Docker volumes
+.pgdata/
+
+# Internal docs — not part of the public repo
+docs/
+
+# Forked from AgentGuard — kept local, not committed
+apps/
+packages/core/
+packages/sdk/
+docker-compose.yml
+.env.example
