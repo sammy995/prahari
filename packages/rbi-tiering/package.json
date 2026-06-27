@@ -11,7 +11,7 @@
   "publishConfig": { "access": "public" },
   "keywords": ["rbi", "model-risk", "mrm", "model-risk-management", "compliance", "banking", "india", "ai-governance"],
   "repository": { "type": "git", "url": "git+https://github.com/sammy995/prahari.git", "directory": "packages/rbi-tiering" },
-  "homepage": "https://github.com/sammy995/prahari/tree/master/packages/rbi-tiering",
+  "homepage": "https://github.com/sammy995/prahari/tree/main/packages/rbi-tiering",
   "bugs": "https://github.com/sammy995/prahari/issues",
   "author": "sammy995",
   "scripts": {

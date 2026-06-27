@@ -12,7 +12,7 @@
   "publishConfig": { "access": "public" },
   "keywords": ["rbi", "model-risk", "mrm", "model-risk-management", "compliance", "banking", "india", "ai-governance", "cli"],
   "repository": { "type": "git", "url": "git+https://github.com/sammy995/prahari.git", "directory": "packages/mrm" },
-  "homepage": "https://github.com/sammy995/prahari/tree/master/packages/mrm",
+  "homepage": "https://github.com/sammy995/prahari/tree/main/packages/mrm",
   "bugs": "https://github.com/sammy995/prahari/issues",
   "author": "sammy995",
   "scripts": {
