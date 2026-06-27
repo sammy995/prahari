@@ -2,68 +2,63 @@
 
 # Prahari
 
-**The open reference implementation of RBI Model Risk Management (MRM).**
+**Open, local-first tooling for RBI Model Risk Management (2026).**
 
-*Inventory, risk-tier, gate, and prove every AI/ML model your bank runs — self-hosted, auditable, India-resident.*
+*Inventory every model, risk-tier it the way RBI asks, check compliance, and generate an examiner-ready report — from one command line, with your data staying on your machine.*
 
-[Control mapping](docs/rbi-mrm-2026-control-mapping.md) · [Disclaimer](DISCLAIMER.md) · [Contributing](CONTRIBUTING.md) · Apache-2.0
+[MRM toolkit](packages/mrm) · [Tiering engine](packages/rbi-tiering) · [Disclaimer](DISCLAIMER.md) · Apache-2.0
 
 </div>
 
-> ⚠️ **Not legal advice. Not an RBI publication. No compliance guarantee.** Prahari is tooling to help you operationalize *your* MRMF; your organization remains accountable. Read [DISCLAIMER.md](DISCLAIMER.md).
+> ⚠️ **Not legal advice. Not an RBI publication. No guarantee of compliance.** Prahari is tooling to help you operationalize *your* Model Risk Management Framework; your organization remains accountable for its models (RBI Para 8). Read [DISCLAIMER.md](DISCLAIMER.md).
 
-> *Prahari* (प्रहरी) — Hindi for *sentinel / guard*. Working name; subject to change.
+> *Prahari* (प्रहरी) — Hindi for *sentinel / guard*.
 
 ---
 
-## Why this exists
+## Why
 
-On **June 24, 2026**, the RBI issued its draft *Guidance on Regulatory Principles for Model Risk Management* ([official text](https://www.rbi.org.in/Scripts/bs_viewcontent.aspx?Id=5089), comments open until **2026-07-24**). It places a Model Risk Management obligation on nearly every Indian financial institution — banks, SFBs, payments banks, co-operative banks, NBFCs, AIFIs, ARCs, CICs — covering **every model**, from a credit-scoring spreadsheet to a frontier LLM agent.
+On **June 24, 2026**, the RBI issued its draft *Guidance on Regulatory Principles for Model Risk Management* (Public Consultation C2R/2026-27/487, comments open until **2026-07-24**). It places a model-risk obligation on nearly every Indian financial institution, over **every model** — from a credit-scoring spreadsheet (Para 7(3)) to a frontier LLM agent.
 
-The mandate is concrete and demanding: a board-approved framework, a complete model inventory ("no model used unless inventoried"), risk tiering, independent validation, **kill switches** and human oversight for AI, explainability thresholds, immutable audit evidence, and 10-year retention.
+Most institutions track this in Word and Excel. Prahari is a small, open, self-hostable tool that does the mechanical parts correctly so a model-risk team can spend its time on judgment, not formatting.
 
-Most institutions manage this today in Word, Excel, and tribal knowledge. Commercial tools exist (ValidMind, Credo AI, Monitaur…) but are closed, foreign-regulator-shaped, and not built for Indian core-banking or data-residency.
+## What's here
 
-**Prahari is the open, India-native, self-hostable answer** — and an open, paragraph-by-paragraph map of the regulation to working controls.
+This repository contains two original, dependency-light packages:
 
-## What Prahari does (mapped to the regulation)
+| Package | What it does |
+| --- | --- |
+| **[@prahari/mrm](packages/mrm)** | The toolkit + `prahari` CLI: model inventory, auto risk-tiering, compliance checks, examiner-ready report. Local-first (a JSON file). |
+| **[@prahari/rbi-tiering](packages/rbi-tiering)** | Pure risk-tiering engine: composite non-offsetting tier (Para 17–20, 52), tier→controls (Para 18), review cadence (Para 17), 10-year retention (Para 23), validation SLA (Para 33). |
 
-| Capability | RBI principle | Status |
-|---|---|---|
-| **Model registry** — all models (incl. spreadsheets, ML, GenAI), lifecycle states, dependencies | Para 21–24 inventory | Building |
-| **Risk-tiering engine** — composite materiality × complexity × autonomy; non-offsetting | Para 17–20, 52 | Building |
-| **In-path gate + kill switch** — observe / constrain / block GenAI calls in real time, with override | Para 60 human oversight | Reuse (engine exists) |
-| **Immutable evidence ledger** — WORM, hash-chained audit of every decision | Para 21–24, 57 | Reuse |
-| **Approvals & exceptions** — dual-approval, separation of duties, RMCB routing for high-risk | Para 12, 18, 34–35 | Reuse |
-| **Explainability thresholds** — per-model threshold + compensating controls on breach | Para 54(1) | Building |
-| **Third-party due diligence** — accountability, audit rights, validation regardless of vendor | Para 45–48 | Building |
-| **Examiner / board reports** — generated from real captured evidence | Para 12, 33 | Building |
-| **Core-banking connector spec** — adapter interface for Finacle/BaNCS/FLEXCUBE (community-contributable) | Para 21 inventory | Spec + reference adapter |
+## Quick start
 
-The full mapping — every RBI paragraph → control ID → required behaviour — lives in
-**[`docs/rbi-mrm-2026-control-mapping.md`](docs/rbi-mrm-2026-control-mapping.md)**. Corrections against the official RBI text are the most valuable contributions.
+```bash
+npm install
+npm run build
+node packages/mrm/dist/cli.js init
+node packages/mrm/dist/cli.js add --name "Loan Pricing Sheet" --type spreadsheet \
+  --use "Derive lending rate" --owner eve --developer frank --validator grace --approver heidi \
+  --materiality 3 --complexity 1 --active
+node packages/mrm/dist/cli.js report --org "Acme Bank"
+```
+
+## RBI coverage (today)
+
+Model definition incl. spreadsheets (Para 7(3)) · accountability (Para 8) · model inventory + required fields (Para 21–22) · 10-year retention (Para 23) · validator independence / three lines of defence (Para 7(8), 15) · risk-based non-offsetting tiering (Para 17–20) · AI autonomy factor (Para 52) · tier→controls incl. RMCB for high risk (Para 18) · annual tier review (Para 17) · validation-report SLA to RMCB (Para 33) · examiner/board report (Para 12).
 
 ## Principles
 
-- **Open & self-hostable.** Your model data stays in your environment. Auditable by design.
-- **The RE stays accountable.** Prahari produces evidence and controls; it never claims your compliance for you (matching RBI Para 45).
-- **Secure by default.** Deny-by-default access, immutable audit, secrets hygiene — inherited by every self-hoster.
-- **One inventory, all models.** Spreadsheets to frontier models, under one tiering and evidence model.
+- **Local-first & self-hostable.** Your model data never leaves your environment.
+- **The RE stays accountable.** Prahari produces evidence and checks; it never claims your compliance for you (Para 8).
+- **Faithful to the text.** Every rule cites its RBI paragraph.
 
-## Status
+## Develop
 
-Early. The control mapping is published first (the reference artifact). The platform is being built by forking and re-aiming a working governance engine (gate + WORM ledger + approvals + evidence). See the design specs in [`docs/superpowers/specs/`](docs/superpowers/specs/).
-
-## Roadmap (short)
-
-1. **Control mapping v1** ✅ (this repo) — the citeable reference.
-2. **Reference implementation** — registry + tiering + gate + evidence + report, self-hostable.
-3. **Connector spec + mock adapter** — so banks/vendors contribute real Finacle/BaNCS adapters.
-4. **Hardening for self-hosters** — RLS policies, data-residency guidance, retention enforcement.
-
-## Contributing
-
-This project gets better the more practitioners — model-risk officers, validators, RegTech consultants, bank engineers — shape it. Start with [CONTRIBUTING.md](CONTRIBUTING.md). The highest-value PRs right now: **corrections to the control mapping against the official RBI text.**
+```bash
+npm test         # all package tests
+npm run build    # build both packages
+```
 
 ## License
 

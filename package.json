@@ -1,18 +1,10 @@
 {
   "name": "prahari-workspace",
   "private": true,
-  "workspaces": ["apps/*", "packages/*"],
+  "workspaces": ["packages/*"],
   "scripts": {
-    "dev": "npm run dev -w apps/api",
-    "dev:web": "npm run dev -w apps/web",
-    "build": "npm run build -w packages/core && npm run build -w apps/api",
-    "build:web": "npm run build -w apps/web",
-    "test": "npm run test -w apps/api && npm run test -w packages/rbi-tiering",
-    "test:integration": "npm run test:integration -w apps/api",
-    "lint": "npm run lint -w apps/api",
-    "typecheck": "npm run typecheck -w apps/api",
-    "migrate:up": "npm run migrate:up -w apps/api",
-    "migrate:down": "npm run migrate:down -w apps/api"
-  },
-  "devDependencies": { "concurrently": "^9.0.0" }
+    "build": "npm run build -w packages/rbi-tiering && npm run build -w packages/mrm",
+    "test": "npm run test -w packages/rbi-tiering && npm run test -w packages/mrm",
+    "typecheck": "npm run typecheck -w packages/rbi-tiering && npm run typecheck -w packages/mrm"
+  }
 }

@@ -1,0 +1,27 @@
+{
+  "name": "@prahari/mrm",
+  "version": "0.1.0",
+  "description": "Local-first RBI Model Risk Management toolkit: model inventory, risk tiering, compliance checks, and examiner-ready reports.",
+  "type": "module",
+  "license": "Apache-2.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": { "prahari": "dist/cli.js" },
+  "files": ["dist"],
+  "engines": { "node": ">=20.0.0" },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@prahari/rbi-tiering": "file:../rbi-tiering",
+    "commander": "^12.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.6.0",
+    "vitest": "^4.0.18"
+  }
+}
