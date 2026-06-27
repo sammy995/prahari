@@ -2,34 +2,51 @@
 
 # Prahari
 
-**Open, local-first tooling for RBI Model Risk Management (2026).**
+**An open-source reference implementation for operationalizing the RBI Draft Guidance on Model Risk Management (2026).**
 
-*Inventory every model, risk-tier it the way RBI asks, check compliance, and generate an examiner-ready report — from one command line, with your data staying on your machine.*
+*From regulation to operational controls, evidence and governance — for AI, ML and analytical models.*
 
-[MRM toolkit](packages/mrm) · [Tiering engine](packages/rbi-tiering) · [Disclaimer](DISCLAIMER.md) · Apache-2.0
+[Control mapping](docs/rbi-mrm-2026-control-mapping.md) · [MRM toolkit](packages/mrm) · [Tiering engine](packages/rbi-tiering) · [Disclaimer](DISCLAIMER.md) · Apache-2.0
 
 </div>
 
-> ⚠️ **Not legal advice. Not an RBI publication. No guarantee of compliance.** Prahari is tooling to help you operationalize *your* Model Risk Management Framework; your organization remains accountable for its models (RBI Para 8). Read [DISCLAIMER.md](DISCLAIMER.md).
+> ⚠️ **Not legal advice. Not an RBI publication. No guarantee of compliance.** Prahari is tooling to help you operationalize *your* Model Risk Management Framework; your organization remains accountable for its models (RBI Para 8). It is *aligned with* the RBI Draft Guidance — it does not certify compliance. Read [DISCLAIMER.md](DISCLAIMER.md).
 
 > *Prahari* (प्रहरी) — Hindi for *sentinel / guard*.
 
 ---
 
-## Why
+## The idea
 
-On **June 24, 2026**, the RBI issued its draft *Guidance on Regulatory Principles for Model Risk Management* (Public Consultation C2R/2026-27/487, comments open until **2026-07-24**). It places a model-risk obligation on nearly every Indian financial institution, over **every model** — from a credit-scoring spreadsheet (Para 7(3)) to a frontier LLM agent.
+The hard part of model-risk compliance is not storing a list of models — plenty of tools do that. It is connecting the **regulation** to a **concrete control**, the evidence that proves it, and an audit trail an examiner can read.
 
-Most institutions track this in Word and Excel. Prahari is a small, open, self-hostable tool that does the mechanical parts correctly so a model-risk team can spend its time on judgment, not formatting.
+```
+   Regulation  (every RBI paragraph)
+        ↓
+   Control     (a concrete, implementable check)
+        ↓
+   Evidence    (captured from your own inventory)
+        ↓
+   Audit       (examiner / board-ready report)
+```
+
+Prahari's hero artifact is the **[paragraph-by-paragraph control mapping](docs/rbi-mrm-2026-control-mapping.md)** — every clause of the RBI Draft Guidance (Para 1–64) mapped to a control, with its status and where it lives in the tooling. The software is the part that *executes* that mapping.
+
+## Who is this for
+
+- Banks, NBFCs, Urban/Rural Co-operative Banks, AIFIs, ARCs, CICs (the RBI-regulated entities)
+- Model-risk officers, model validators, internal auditors
+- AI / model governance teams and RegTech vendors
+- Students and researchers studying model-risk regulation
 
 ## What's here
 
-This repository contains two original, dependency-light packages:
+Two original, dependency-light packages:
 
 | Package | What it does |
 | --- | --- |
-| **[@prahari/mrm](packages/mrm)** | The toolkit + `prahari` CLI: model inventory, auto risk-tiering, compliance checks, examiner-ready report. Local-first (a JSON file). |
-| **[@prahari/rbi-tiering](packages/rbi-tiering)** | Pure risk-tiering engine: composite non-offsetting tier (Para 17–20, 52), tier→controls (Para 18), review cadence (Para 17), 10-year retention (Para 23), validation SLA (Para 33). |
+| **[@prahari/mrm](packages/mrm)** | Toolkit + `prahari` CLI: model inventory, auto risk-tiering, compliance checks, examiner-ready report. Local-first (a JSON file). |
+| **[@prahari/rbi-tiering](packages/rbi-tiering)** | Pure tiering engine: composite non-offsetting tier (Para 17–20, 52), tier→controls (Para 18), review cadence (Para 17), 10-year retention (Para 23), validation SLA (Para 33). |
 
 ## Quick start
 
@@ -43,22 +60,21 @@ node packages/mrm/dist/cli.js add --name "Loan Pricing Sheet" --type spreadsheet
 node packages/mrm/dist/cli.js report --org "Acme Bank"
 ```
 
-## RBI coverage (today)
+## Scope (today)
 
-Model definition incl. spreadsheets (Para 7(3)) · accountability (Para 8) · model inventory + required fields (Para 21–22) · 10-year retention (Para 23) · validator independence / three lines of defence (Para 7(8), 15) · risk-based non-offsetting tiering (Para 17–20) · AI autonomy factor (Para 52) · tier→controls incl. RMCB for high risk (Para 18) · annual tier review (Para 17) · validation-report SLA to RMCB (Para 33) · examiner/board report (Para 12).
+Govern the lifecycle of AI, ML and analytical models — inventory, tiering, validation timing, approvals routing and evidence — aligned with the RBI Draft Guidance: model definition incl. spreadsheets (Para 7(3)), accountability (Para 8), inventory + required fields (Para 21–22), 10-year retention (Para 23), validator independence / three lines of defence (Para 7(8), 15), non-offsetting risk tiering (Para 17–20), AI autonomy factor (Para 52), tier→controls incl. RMCB for high risk (Para 18), annual review (Para 17), validation-report SLA (Para 33), examiner/board report (Para 12).
+
+## Roadmap
+
+- Deeper control documentation per paragraph (intent → expected controls → evidence → example).
+- Beyond RBI: a shared control core mappable to NIST AI RMF, ISO 42001, EU AI Act, SR 11-7, MAS FEAT, OSFI.
+- `update` / CSV import / HTML-PDF report; optional API.
 
 ## Principles
 
 - **Local-first & self-hostable.** Your model data never leaves your environment.
 - **The RE stays accountable.** Prahari produces evidence and checks; it never claims your compliance for you (Para 8).
-- **Faithful to the text.** Every rule cites its RBI paragraph.
-
-## Develop
-
-```bash
-npm test         # all package tests
-npm run build    # build both packages
-```
+- **Faithful to the text.** Every control cites its RBI paragraph.
 
 ## License
 
