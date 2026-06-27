@@ -39,10 +39,9 @@ scratch/
 # Docker volumes
 .pgdata/
 
-# Internal docs (specs, plans, comment drafts) — kept local.
-# Exception: the RBI control mapping is public (the canonical reference).
-docs/*
-!docs/rbi-mrm-2026-control-mapping.md
+# Internal docs (specs, plans, comment drafts) — kept local, never committed.
+# Public reference material lives in reference/ instead.
+docs/
 
 # Forked from AgentGuard — kept local, not committed
 apps/

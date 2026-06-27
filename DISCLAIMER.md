@@ -18,7 +18,7 @@ Prahari is provided under the Apache License 2.0 **"AS IS", without warranties o
 
 ## The RBI mapping is interpretation, not the law
 
-The control mapping in [`docs/rbi-mrm-2026-control-mapping.md`](docs/rbi-mrm-2026-control-mapping.md) is an independent interpretation of the **draft** RBI guidance (June 24, 2026), derived from the official text but not authored by RBI. The draft may change before it is finalized. **Always read the official RBI notification** and consult qualified legal and compliance professionals for your obligations.
+The control mapping in [`reference/rbi-mrm-2026-control-mapping.md`](reference/rbi-mrm-2026-control-mapping.md) is an independent interpretation of the **draft** RBI guidance (June 24, 2026), derived from the official text but not authored by RBI. The draft may change before it is finalized. **Always read the official RBI notification** and consult qualified legal and compliance professionals for your obligations.
 
 ## Security and data
 

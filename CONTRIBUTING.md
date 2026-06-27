@@ -4,7 +4,7 @@ Thank you for helping build the open reference for RBI Model Risk Management. Th
 
 ## Highest-value contributions right now
 
-1. **Corrections to the control mapping** ([`docs/rbi-mrm-2026-control-mapping.md`](docs/rbi-mrm-2026-control-mapping.md)) against the **official** RBI text. If a mapping misreads a paragraph, that is the most important PR you can open. Cite the paragraph.
+1. **Corrections to the control mapping** ([`reference/rbi-mrm-2026-control-mapping.md`](reference/rbi-mrm-2026-control-mapping.md)) against the **official** RBI text. If a mapping misreads a paragraph, that is the most important PR you can open. Cite the paragraph.
 2. **Core-banking adapters** against the connector spec (Finacle / TCS BaNCS / Oracle FLEXCUBE / Temenos). You do not need to share proprietary details — the interface is open.
 3. **Real-world gaps:** controls an examiner would expect that the mapping misses.
 

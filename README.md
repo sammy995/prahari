@@ -6,7 +6,11 @@
 
 *From regulation to operational controls, evidence and governance — for AI, ML and analytical models.*
 
-[Control mapping](docs/rbi-mrm-2026-control-mapping.md) · [MRM toolkit](packages/mrm) · [Tiering engine](packages/rbi-tiering) · [Disclaimer](DISCLAIMER.md) · Apache-2.0
+[![npm @prahari/mrm](https://img.shields.io/npm/v/@prahari/mrm?label=%40prahari%2Fmrm)](https://www.npmjs.com/package/@prahari/mrm)
+[![npm @prahari/rbi-tiering](https://img.shields.io/npm/v/@prahari/rbi-tiering?label=%40prahari%2Frbi-tiering)](https://www.npmjs.com/package/@prahari/rbi-tiering)
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
+
+[Control mapping](reference/rbi-mrm-2026-control-mapping.md) · [Control reference](reference/controls) · [MRM toolkit](packages/mrm) · [Tiering engine](packages/rbi-tiering) · [Disclaimer](DISCLAIMER.md)
 
 </div>
 
@@ -30,7 +34,7 @@ The hard part of model-risk compliance is not storing a list of models — plent
    Audit       (examiner / board-ready report)
 ```
 
-Prahari's hero artifact is the **[paragraph-by-paragraph control mapping](docs/rbi-mrm-2026-control-mapping.md)** — every clause of the RBI Draft Guidance (Para 1–64) mapped to a control, with its status and where it lives in the tooling. The software is the part that *executes* that mapping.
+Prahari's hero artifact is the **[paragraph-by-paragraph control mapping](reference/rbi-mrm-2026-control-mapping.md)** — every clause of the RBI Draft Guidance (Para 1–64) mapped to a control — plus a **[deeper control reference](reference/controls)** that takes the highest-value paragraphs from intent → controls → evidence → example. The software is the part that *executes* that mapping.
 
 ## Who is this for
 
