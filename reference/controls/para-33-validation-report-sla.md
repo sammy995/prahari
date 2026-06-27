@@ -41,3 +41,7 @@ isValidationReportOverdue({ validationCompletedAt: new Date('2026-01-01'),
 - **No report timestamp.** Without `validationReportedAt` you cannot prove the SLA was met.
 - **Treating "late but reported" as a permanent breach.** Once placed before the RMCB, it is no longer overdue (though lateness itself may warrant a note).
 - **Per-change reporting for fast-updating models.** For controlled auto-updates, periodic RMCB reporting plus a material-change trigger (Para 42) is usually more practical than a report per change.
+
+---
+
+*Cite as:* **Prahari Control Reference — Para 33** · part of [Prahari](https://github.com/sammy995/prahari) (Apache-2.0). Aligned with the RBI Draft Guidance (2026); re-verify against the final notification.

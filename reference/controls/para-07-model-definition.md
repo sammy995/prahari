@@ -48,3 +48,7 @@ export enum ModelType {
 - **Treating EUC spreadsheets as out of scope.** The illustration explicitly brings them in.
 - **Classifying by technology, not use.** A simple rule engine that denies credit is in scope; a complex ML model used only for internal dashboards may be lower-tier.
 - **Over-inventorying at full depth.** Capture everything, but make documentation/validation depth proportionate to tier — otherwise the framework collapses under EUC volume.
+
+---
+
+*Cite as:* **Prahari Control Reference — Para 7(3)** · part of [Prahari](https://github.com/sammy995/prahari) (Apache-2.0). Aligned with the RBI Draft Guidance (2026); re-verify against the final notification.

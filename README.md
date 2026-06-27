@@ -2,55 +2,69 @@
 
 # Prahari
 
-**An open-source reference implementation for operationalizing the RBI Draft Guidance on Model Risk Management (2026).**
-
-*From regulation to operational controls, evidence and governance — for AI, ML and analytical models.*
+**Open-source model-risk governance for regulated AI — starting with the RBI Draft Guidance (2026).**
 
 [![npm @prahari/mrm](https://img.shields.io/npm/v/@prahari/mrm?label=%40prahari%2Fmrm)](https://www.npmjs.com/package/@prahari/mrm)
 [![npm @prahari/rbi-tiering](https://img.shields.io/npm/v/@prahari/rbi-tiering?label=%40prahari%2Frbi-tiering)](https://www.npmjs.com/package/@prahari/rbi-tiering)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
 
-[Control mapping](reference/rbi-mrm-2026-control-mapping.md) · [Control reference](reference/controls) · [MRM toolkit](packages/mrm) · [Tiering engine](packages/rbi-tiering) · [Disclaimer](DISCLAIMER.md)
+[Control reference](reference/controls) · [Control mapping](reference/rbi-mrm-2026-control-mapping.md) · [Toolkit](packages/mrm) · [Tiering engine](packages/rbi-tiering) · [Examples](examples) · [Disclaimer](DISCLAIMER.md)
 
 </div>
 
-> ⚠️ **Not legal advice. Not an RBI publication. No guarantee of compliance.** Prahari is tooling to help you operationalize *your* Model Risk Management Framework; your organization remains accountable for its models (RBI Para 8). It is *aligned with* the RBI Draft Guidance — it does not certify compliance. Read [DISCLAIMER.md](DISCLAIMER.md).
-
-> *Prahari* (प्रहरी) — Hindi for *sentinel / guard*.
+> ⚠️ **Not legal advice. Not an RBI publication. No guarantee of compliance.** Prahari helps you operationalize *your* Model Risk Management Framework; your organization remains accountable for its models (RBI Para 8). Read [DISCLAIMER.md](DISCLAIMER.md).
 
 ---
 
-## The idea
+## Why
 
-The hard part of model-risk compliance is not storing a list of models — plenty of tools do that. It is connecting the **regulation** to a **concrete control**, the evidence that proves it, and an audit trail an examiner can read.
+AI-governance frameworks increasingly describe *what* an organization should do, but rarely show *how* to implement it. The hard part of model-risk compliance is not storing a list of models — plenty of tools do that. It is **connecting a regulation to a concrete control, the evidence that proves it, and an audit trail an examiner can read.**
 
+Prahari is two complementary artifacts:
+
+1. a **human-readable control reference** that maps a regulation, paragraph by paragraph, to concrete operational controls; and
+2. an **open-source toolkit** that implements those controls and produces auditable evidence.
+
+It starts with the **RBI Draft Guidance on Model Risk Management (2026)**, and is built so the same control core can later map to other frameworks (NIST AI RMF, ISO 42001, EU AI Act, SR 11-7, MAS FEAT).
+
+> **Why open source?** Because regulatory controls should be **inspectable**. A bank, an auditor, and a regulator should all be able to read exactly how a requirement becomes a control.
+
+## The thesis, in four words
+
+```mermaid
+flowchart LR
+    R[Regulation<br/>every RBI paragraph] --> C[Control<br/>concrete, implementable]
+    C --> E[Evidence<br/>captured from your inventory]
+    E --> A[Audit<br/>examiner / board report]
 ```
-   Regulation  (every RBI paragraph)
-        ↓
-   Control     (a concrete, implementable check)
-        ↓
-   Evidence    (captured from your own inventory)
-        ↓
-   Audit       (examiner / board-ready report)
-```
 
-Prahari's hero artifact is the **[paragraph-by-paragraph control mapping](reference/rbi-mrm-2026-control-mapping.md)** — every clause of the RBI Draft Guidance (Para 1–64) mapped to a control — plus a **[deeper control reference](reference/controls)** that takes the highest-value paragraphs from intent → controls → evidence → example. The software is the part that *executes* that mapping.
+## How the toolkit works (today)
+
+Local-first and self-hostable: your model data is a JSON file that never leaves your environment. No server, no cloud.
+
+```mermaid
+flowchart TD
+    CLI["prahari CLI / @prahari/mrm library"] --> INV[("Model inventory<br/>.prahari/inventory.json")]
+    INV --> T["Risk tiering<br/>@prahari/rbi-tiering (Para 17-20, 52)"]
+    INV --> K["Compliance checks<br/>review-due, validation SLA, retention"]
+    T --> RPT["Examiner / board report (Markdown)"]
+    K --> RPT
+```
 
 ## Who is this for
 
-- Banks, NBFCs, Urban/Rural Co-operative Banks, AIFIs, ARCs, CICs (the RBI-regulated entities)
-- Model-risk officers, model validators, internal auditors
-- AI / model governance teams and RegTech vendors
-- Students and researchers studying model-risk regulation
+Banks · NBFCs · Urban/Rural Co-operative Banks · AIFIs · ARCs · CICs · model-risk officers · model validators · internal auditors · AI/model-governance teams · RegTech vendors · researchers.
 
-## What's here
+## How it compares
 
-Two original, dependency-light packages:
-
-| Package | What it does |
-| --- | --- |
-| **[@prahari/mrm](packages/mrm)** | Toolkit + `prahari` CLI: model inventory, auto risk-tiering, compliance checks, examiner-ready report. Local-first (a JSON file). |
-| **[@prahari/rbi-tiering](packages/rbi-tiering)** | Pure tiering engine: composite non-offsetting tier (Para 17–20, 52), tier→controls (Para 18), review cadence (Para 17), 10-year retention (Para 23), validation SLA (Para 33). |
+| Capability | Prahari | Typical GRC suite | Spreadsheet |
+| --- | :---: | :---: | :---: |
+| Paragraph-level control mapping | ✅ | partial | ❌ |
+| Open source / inspectable | ✅ | ❌ | n/a |
+| Self-hosted (data stays with you) | ✅ | depends | ✅ |
+| Non-offsetting risk tiering (Para 20) | ✅ | varies | ❌ |
+| Evidence + examiner report generation | ✅ | partial | ❌ |
+| Cost | free | $$$ | free |
 
 ## Quick start
 
@@ -64,14 +78,24 @@ node packages/mrm/dist/cli.js add --name "Loan Pricing Sheet" --type spreadsheet
 node packages/mrm/dist/cli.js report --org "Acme Bank"
 ```
 
-## Scope (today)
+See [examples/](examples) for ready-made inventories and the reports they produce.
 
-Govern the lifecycle of AI, ML and analytical models — inventory, tiering, validation timing, approvals routing and evidence — aligned with the RBI Draft Guidance: model definition incl. spreadsheets (Para 7(3)), accountability (Para 8), inventory + required fields (Para 21–22), 10-year retention (Para 23), validator independence / three lines of defence (Para 7(8), 15), non-offsetting risk tiering (Para 17–20), AI autonomy factor (Para 52), tier→controls incl. RMCB for high risk (Para 18), annual review (Para 17), validation-report SLA (Para 33), examiner/board report (Para 12).
+## What's here
+
+| Package | What it does |
+| --- | --- |
+| **[@prahari/mrm](packages/mrm)** | Toolkit + `prahari` CLI: inventory, auto risk-tiering, compliance checks, examiner-ready report. |
+| **[@prahari/rbi-tiering](packages/rbi-tiering)** | Pure tiering engine: composite non-offsetting tier (Para 17–20, 52), tier→controls (Para 18), review cadence (Para 17), 10-year retention (Para 23), validation SLA (Para 33). |
+
+## Control reference
+
+The [control reference](reference/controls) takes the highest-value paragraphs from **verbatim text → intent → expected controls → evidence → example → common mistakes**, so each page is citeable on its own (e.g. *Prahari Control Reference — Para 60*). The full clause-by-clause table is the [control mapping](reference/rbi-mrm-2026-control-mapping.md).
 
 ## Roadmap
 
-- Deeper control documentation per paragraph (intent → expected controls → evidence → example).
-- Beyond RBI: a shared control core mappable to NIST AI RMF, ISO 42001, EU AI Act, SR 11-7, MAS FEAT, OSFI.
+- Complete the per-paragraph control reference (Para 1–64).
+- `examples/` per institution type (bank, NBFC, credit scoring, GenAI chatbot, fraud).
+- Beyond RBI: a shared control core mapped to NIST AI RMF / ISO 42001 / EU AI Act / SR 11-7 / MAS FEAT.
 - `update` / CSV import / HTML-PDF report; optional API.
 
 ## Principles

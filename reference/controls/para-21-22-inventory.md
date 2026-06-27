@@ -48,3 +48,7 @@ isRegistered(inv, id); // the Para 21 gate: only inventoried models may be used
 - **No enforcement.** A list nobody checks is not a gate — wire `isRegistered` into deployment.
 - **Dropping decommissioned models.** They must stay (Para 23), not be deleted.
 - **Skipping dependencies.** Without upstream/downstream links you cannot see enterprise-wide or cascading risk.
+
+---
+
+*Cite as:* **Prahari Control Reference — Para 21-22** · part of [Prahari](https://github.com/sammy995/prahari) (Apache-2.0). Aligned with the RBI Draft Guidance (2026); re-verify against the final notification.

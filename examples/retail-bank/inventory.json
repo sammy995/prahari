@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "models": [
+    {
+      "id": "572784b6-334c-4f05-8306-c9e625eab14d",
+      "name": "Retail Credit Scorecard",
+      "type": "ml",
+      "intendedUse": "Score retail loan applicants",
+      "isThirdParty": false,
+      "isAi": true,
+      "consumerFacing": false,
+      "lifecycle": "active",
+      "roles": {
+        "owner": "priya",
+        "developer": "arjun",
+        "validator": "meena",
+        "approver": "rao"
+      },
+      "dependencies": [],
+      "tieringInputs": {
+        "materiality": 3,
+        "complexity": 2
+      },
+      "createdAt": "2026-06-27T13:43:46.121Z",
+      "updatedAt": "2026-06-27T13:43:46.121Z",
+      "tier": "high",
+      "tierRationale": "Tier high (composite 3) from materiality=3, complexity=2; non-offsetting max per RBI Para 20.",
+      "validationCompletedAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "bf85b8a2-f619-4151-9f09-e94dd1783261",
+      "name": "Loan Pricing Sheet",
+      "type": "spreadsheet",
+      "intendedUse": "Derive lending rate",
+      "isThirdParty": false,
+      "isAi": false,
+      "consumerFacing": false,
+      "lifecycle": "active",
+      "roles": {
+        "owner": "eve",
+        "developer": "frank",
+        "validator": "grace",
+        "approver": "heidi"
+      },
+      "dependencies": [],
+      "tieringInputs": {
+        "materiality": 3,
+        "complexity": 1
+      },
+      "createdAt": "2026-06-27T13:43:46.182Z",
+      "updatedAt": "2026-06-27T13:43:46.182Z",
+      "tier": "high",
+      "tierRationale": "Tier high (composite 3) from materiality=3, complexity=1; non-offsetting max per RBI Para 20."
+    },
+    {
+      "id": "eb8889ea-9a84-4548-89ed-91acd78b5c2e",
+      "name": "AML Alert Triage Assistant",
+      "type": "genai",
+      "intendedUse": "Summarise and triage AML alerts",
+      "isThirdParty": false,
+      "isAi": true,
+      "consumerFacing": true,
+      "lifecycle": "active",
+      "roles": {
+        "owner": "sara",
+        "developer": "dev1",
+        "validator": "val1",
+        "approver": "cro"
+      },
+      "dependencies": [],
+      "tieringInputs": {
+        "materiality": 2,
+        "complexity": 3,
+        "autonomy": 3
+      },
+      "createdAt": "2026-06-27T13:43:46.254Z",
+      "updatedAt": "2026-06-27T13:43:46.254Z",
+      "tier": "high",
+      "tierRationale": "Tier high (composite 3) from materiality=2, complexity=3, autonomy=3; non-offsetting max per RBI Para 20."
+    },
+    {
+      "id": "80569dc4-dffc-43fb-9a78-3e35f49d6c10",
+      "name": "Branch Footfall Forecaster",
+      "type": "statistical",
+      "intendedUse": "Forecast branch footfall",
+      "isThirdParty": false,
+      "isAi": false,
+      "consumerFacing": false,
+      "lifecycle": "active",
+      "roles": {
+        "owner": "ops",
+        "developer": "dev2",
+        "validator": "val2",
+        "approver": "head"
+      },
+      "dependencies": [],
+      "createdAt": "2026-06-27T13:43:46.316Z",
+      "updatedAt": "2026-06-27T13:43:46.316Z"
+    }
+  ]
+}

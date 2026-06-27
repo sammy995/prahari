@@ -28,6 +28,10 @@ Every page follows the same shape, so the set stays consistent and easy to exten
 5. **Example** — how Prahari implements it (CLI / library / data).
 6. **Common mistakes** — where REs get it wrong.
 
+## How to cite
+
+Each page is a stable, citeable unit. Reference it as, e.g., **Prahari Control Reference — Para 60**, linking to the page. The goal is for practitioners to cite a specific control interpretation rather than "some GitHub README".
+
 ## Contributing
 
 The most valuable contributions are (a) corrections against the official RBI text and (b) new pages for paragraphs not yet covered, following the template above. Cite the paragraph in every claim. See [CONTRIBUTING](../../CONTRIBUTING.md).

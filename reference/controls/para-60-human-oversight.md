@@ -38,3 +38,7 @@ No AI model should be able to act without a human able to stop it. The kill swit
 - **Assuming you can kill a hosted model.** You control your integration, not the provider's runtime — design the cut-off at your boundary.
 - **Oversight by under-qualified staff.** Para 62 requires reviewers who can actually challenge the model.
 - **Never reviewing overrides.** Para 63 wants the override/near-miss log itself reviewed and the arrangements strengthened over time.
+
+---
+
+*Cite as:* **Prahari Control Reference — Para 60** · part of [Prahari](https://github.com/sammy995/prahari) (Apache-2.0). Aligned with the RBI Draft Guidance (2026); re-verify against the final notification.

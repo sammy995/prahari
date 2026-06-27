@@ -48,3 +48,7 @@ The core is a `Math.max` over drivers, with "other factors" applied as one-way b
 - **Letting "other factors" lower a tier.** They escalate only.
 - **Tiering once and forgetting.** Para 17 requires at least annual review and re-tier on triggers (e.g. material change, incident).
 - **Ignoring autonomy for AI.** Para 52 adds reliance/autonomy as a driver for AI models.
+
+---
+
+*Cite as:* **Prahari Control Reference — Para 17-20** · part of [Prahari](https://github.com/sammy995/prahari) (Apache-2.0). Aligned with the RBI Draft Guidance (2026); re-verify against the final notification.

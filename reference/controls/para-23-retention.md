@@ -42,3 +42,7 @@ isRetentionExpired({ decommissionedAt: new Date('2026-01-01'), now: new Date() }
 - **Deleting on decommission.** The record must stay in the inventory for ≥10 years.
 - **Counting from the wrong date.** Use the later of decommission vs ceasing as backup/benchmark.
 - **Retention vs DPDP conflict.** If documentation embeds personal data, retaining it 10 years can clash with erasure/storage-limitation under the DPDP Act, 2023. Retain model metadata/methodology/validation artefacts; anonymise or segregate underlying personal data. (This is exactly the kind of point worth raising in consultation.)
+
+---
+
+*Cite as:* **Prahari Control Reference — Para 23** · part of [Prahari](https://github.com/sammy995/prahari) (Apache-2.0). Aligned with the RBI Draft Guidance (2026); re-verify against the final notification.
