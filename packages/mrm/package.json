@@ -7,8 +7,14 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": { "prahari": "dist/cli.js" },
-  "files": ["dist"],
+  "files": ["dist", "README.md"],
   "engines": { "node": ">=20.0.0" },
+  "publishConfig": { "access": "public" },
+  "keywords": ["rbi", "model-risk", "mrm", "model-risk-management", "compliance", "banking", "india", "ai-governance", "cli"],
+  "repository": { "type": "git", "url": "git+https://github.com/sammy995/prahari.git", "directory": "packages/mrm" },
+  "homepage": "https://github.com/sammy995/prahari/tree/master/packages/mrm",
+  "bugs": "https://github.com/sammy995/prahari/issues",
+  "author": "sammy995",
   "scripts": {
     "build": "tsc",
     "test": "vitest run",
@@ -16,7 +22,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@prahari/rbi-tiering": "file:../rbi-tiering",
+    "@prahari/rbi-tiering": "^0.1.0",
     "commander": "^12.1.0"
   },
   "devDependencies": {
