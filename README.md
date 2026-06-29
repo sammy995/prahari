@@ -20,6 +20,15 @@
 
 ---
 
+## What you get
+
+- **A control reference you can cite.** [24 pages](reference/controls) mapping the RBI guidance **paragraph by paragraph** — verbatim text → intent → expected controls → evidence → example → common mistakes. Covers **Para 1–63 end to end**, so you cite a specific interpretation (*Prahari Control Reference — Para 54*) instead of "some README".
+- **A local-first toolkit.** The `prahari` CLI + libraries give you a **model inventory**, automatic **non-offsetting risk tiering** (Para 17–20, 52), **compliance checks**, and an **examiner-ready report** — from a single JSON file. No server, no cloud; your model data never leaves your environment.
+- **A CI gate.** `prahari check` **exits non-zero** on a critical finding (e.g. a high-tier model whose validation report is overdue, Para 33), so non-compliance can block a pipeline — see the [fraud-detection example](examples/fraud-detection).
+- **Evidence an examiner can read.** Every control cites its RBI paragraph; every report states that **your organization** — not the tool, not a vendor — remains accountable (Para 8).
+
+**New here?** → [Quick start](#quick-start) · [Examples](examples) · [Control reference](reference/controls)
+
 ## Why
 
 AI-governance frameworks increasingly describe *what* an organization should do, but rarely show *how* to implement it. The hard part of model-risk compliance is not storing a list of models — plenty of tools do that. It is **connecting a regulation to a concrete control, the evidence that proves it, and an audit trail an examiner can read.**
@@ -93,11 +102,11 @@ See [examples/](examples) for ready-made inventories and the reports they produc
 
 ## Control reference
 
-The [control reference](reference/controls) takes the highest-value paragraphs from **verbatim text → intent → expected controls → evidence → example → common mistakes**, so each page is citeable on its own (e.g. *Prahari Control Reference — Para 60*). The full clause-by-clause table is the [control mapping](reference/rbi-mrm-2026-control-mapping.md).
+The [control reference](reference/controls) covers the RBI guidance **end to end (Para 1–63), in 24 pages**, each following the same shape — **verbatim text → intent → expected controls → evidence → example → common mistakes** — so every page is citeable on its own (e.g. *Prahari Control Reference — Para 60*). The condensed clause-by-clause table is the [control mapping](reference/rbi-mrm-2026-control-mapping.md).
 
 ## Roadmap
 
-- Expand the per-paragraph control reference toward full Para 1–64 coverage (21 pages today).
+- Deepen the per-paragraph control reference (24 pages, full Para 1–63 coverage today); refine against the final RBI notification.
 - More `examples/` per institution type (retail bank, NBFC, GenAI chatbot, credit scoring, fraud detection shipped; more welcome).
 - Beyond RBI: a shared control core mapped to NIST AI RMF / ISO 42001 / EU AI Act / SR 11-7 / MAS FEAT.
 - `update` / CSV import / HTML-PDF report; optional API.

@@ -4,12 +4,13 @@ Per-paragraph implementation guidance for the RBI Draft *Guidance on Regulatory 
 
 > Not legal advice; not an RBI publication; no guarantee of compliance. The Regulated Entity remains accountable (Para 8). See [DISCLAIMER](../../DISCLAIMER.md). Paragraph numbers follow the draft; re-verify against the final notification.
 
-For the full clause-by-clause table see the [control mapping](../rbi-mrm-2026-control-mapping.md). The pages below go deeper on the highest-value controls.
+These pages cover the guidance **end to end (Para 1–63)** in 24 citeable units. For the condensed clause-by-clause table see the [control mapping](../rbi-mrm-2026-control-mapping.md).
 
 ## Pages
 
 | Paragraph(s) | Topic |
 | --- | --- |
+| [Para 1–6](para-01-06-applicability-scope.md) | Objective, applicability, and scope |
 | [Para 7(3)](para-07-model-definition.md) | What counts as a "model" (incl. spreadsheets) |
 | [Para 8](para-08-accountability.md) | The RE stays accountable for all models |
 | [Para 9–13](para-09-13-governance.md) | Governance: the MRMF, the Board, the RMCB |
@@ -29,8 +30,10 @@ For the full clause-by-clause table see the [control mapping](../rbi-mrm-2026-co
 | [Para 49–53](para-49-53-ai-scope-autonomy.md) | AI/ML scope, autonomy, third-party AI supply chain |
 | [Para 54](para-54-ai-behavioural-explainability.md) | AI behavioural risk + explainability thresholds |
 | [Para 55–57](para-55-57-redteam-autoupdate-docs.md) | Red-teaming, auto-updating models, AI documentation |
+| [Para 58](para-58-ai-security-baseline.md) | AI deployment security baseline |
 | [Para 59](para-59-ai-deployment-security.md) | Customer-facing AI: prompt injection, disclosure, handoff |
 | [Para 60](para-60-human-oversight.md) | Human oversight and the kill switch |
+| [Para 61–63](para-61-63-human-factors.md) | Human factors: bias, competency, reviewing overrides |
 
 ## Page template
 
