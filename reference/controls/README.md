@@ -17,14 +17,18 @@ For the full clause-by-clause table see the [control mapping](../rbi-mrm-2026-co
 | [Para 17–20](para-17-20-risk-tiering.md) | Risk-based, non-offsetting model tiering |
 | [Para 21–22](para-21-22-inventory.md) | Model inventory and minimum fields |
 | [Para 23](para-23-retention.md) | Ten-year retention of decommissioned models |
+| [Para 24–25](para-24-25-documentation-consumer.md) | Documentation and consumer protection |
 | [Para 26–28](para-26-28-development.md) | Before you build: rationale, cost–benefit, data governance |
 | [Para 29–32](para-29-32-validation.md) | Independent validation of all models |
 | [Para 33](para-33-validation-report-sla.md) | Validation report to the RMCB within three months |
 | [Para 34–35](para-34-35-approval.md) | Approval authority and time-boxed exceptions |
 | [Para 36–37](para-36-37-deployment-monitoring.md) | Deployment and ongoing monitoring |
 | [Para 38–42](para-38-42-change-management.md) | Change management + material-change trigger |
+| [Para 43–44](para-43-44-bcp-decommissioning.md) | Business continuity and decommissioning |
 | [Para 45–48](para-45-48-third-party.md) | Third-party models (validate anyway, audit rights) |
+| [Para 49–53](para-49-53-ai-scope-autonomy.md) | AI/ML scope, autonomy, third-party AI supply chain |
 | [Para 54](para-54-ai-behavioural-explainability.md) | AI behavioural risk + explainability thresholds |
+| [Para 55–57](para-55-57-redteam-autoupdate-docs.md) | Red-teaming, auto-updating models, AI documentation |
 | [Para 59](para-59-ai-deployment-security.md) | Customer-facing AI: prompt injection, disclosure, handoff |
 | [Para 60](para-60-human-oversight.md) | Human oversight and the kill switch |
 
