@@ -10,6 +10,10 @@
 
 [Control reference](reference/controls) · [Control mapping](reference/rbi-mrm-2026-control-mapping.md) · [Toolkit](packages/mrm) · [Tiering engine](packages/rbi-tiering) · [Examples](examples) · [Disclaimer](DISCLAIMER.md)
 
+<br/>
+
+<img src="assets/check-demo.svg" alt="prahari check flags a critical RBI Para 33 finding and exits non-zero to fail CI, then writes an examiner-ready report" width="700">
+
 </div>
 
 > ⚠️ **Not legal advice. Not an RBI publication. No guarantee of compliance.** Prahari helps you operationalize *your* Model Risk Management Framework; your organization remains accountable for its models (RBI Para 8). Read [DISCLAIMER.md](DISCLAIMER.md).
@@ -94,7 +98,7 @@ The [control reference](reference/controls) takes the highest-value paragraphs f
 ## Roadmap
 
 - Expand the per-paragraph control reference toward full Para 1–64 coverage (10 pages today).
-- More `examples/` per institution type (retail bank, NBFC, GenAI chatbot shipped; credit scoring, fraud next).
+- More `examples/` per institution type (retail bank, NBFC, GenAI chatbot, credit scoring, fraud detection shipped; more welcome).
 - Beyond RBI: a shared control core mapped to NIST AI RMF / ISO 42001 / EU AI Act / SR 11-7 / MAS FEAT.
 - `update` / CSV import / HTML-PDF report; optional API.
 

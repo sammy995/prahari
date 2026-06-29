@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "models": [
+    {
+      "id": "e46e1b13-1609-4adf-a234-892a84b5746d",
+      "name": "Real-time Transaction Fraud Model",
+      "type": "ml",
+      "intendedUse": "Auto-block suspected fraudulent transactions in real time",
+      "isThirdParty": false,
+      "isAi": true,
+      "consumerFacing": true,
+      "lifecycle": "active",
+      "roles": {
+        "owner": "fraudhead",
+        "developer": "aiteam",
+        "validator": "airisk",
+        "approver": "cro"
+      },
+      "dependencies": [],
+      "tieringInputs": {
+        "materiality": 3,
+        "complexity": 3,
+        "autonomy": 3
+      },
+      "createdAt": "2026-06-29T18:43:35.630Z",
+      "updatedAt": "2026-06-29T18:43:35.630Z",
+      "tier": "high",
+      "tierRationale": "Tier high (composite 3) from materiality=3, complexity=3, autonomy=3; non-offsetting max per RBI Para 20.",
+      "validationCompletedAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "3c941b4b-2a02-4fd2-9e8e-8d89ddbe6d54",
+      "name": "AML Transaction Monitoring",
+      "type": "ml",
+      "intendedUse": "Flag transactions for AML investigation",
+      "isThirdParty": false,
+      "isAi": true,
+      "consumerFacing": false,
+      "lifecycle": "active",
+      "roles": {
+        "owner": "aml",
+        "developer": "dteam",
+        "validator": "vteam",
+        "approver": "cro"
+      },
+      "dependencies": [],
+      "tieringInputs": {
+        "materiality": 3,
+        "complexity": 2
+      },
+      "createdAt": "2026-06-29T18:43:35.694Z",
+      "updatedAt": "2026-06-29T18:43:35.694Z",
+      "tier": "high",
+      "tierRationale": "Tier high (composite 3) from materiality=3, complexity=2; non-offsetting max per RBI Para 20."
+    },
+    {
+      "id": "a1dcd65e-b3f0-4d41-a7ea-9501b29dfed6",
+      "name": "Device Risk Score (vendor)",
+      "type": "ml",
+      "intendedUse": "Third-party device-fingerprint risk score",
+      "isThirdParty": true,
+      "isAi": true,
+      "consumerFacing": false,
+      "lifecycle": "active",
+      "roles": {
+        "owner": "fraudhead",
+        "developer": "vendorco",
+        "validator": "airisk",
+        "approver": "head"
+      },
+      "dependencies": [],
+      "tieringInputs": {
+        "materiality": 2,
+        "complexity": 2
+      },
+      "createdAt": "2026-06-29T18:43:35.751Z",
+      "updatedAt": "2026-06-29T18:43:35.751Z",
+      "tier": "medium",
+      "tierRationale": "Tier medium (composite 2) from materiality=2, complexity=2; non-offsetting max per RBI Para 20."
+    },
+    {
+      "id": "29977a2e-8182-43d7-8cd2-752b56b2939c",
+      "name": "Chargeback Predictor",
+      "type": "statistical",
+      "intendedUse": "Predict chargeback likelihood for merchants",
+      "isThirdParty": false,
+      "isAi": false,
+      "consumerFacing": false,
+      "lifecycle": "active",
+      "roles": {
+        "owner": "ops",
+        "developer": "dteam",
+        "validator": "vteam2",
+        "approver": "head"
+      },
+      "dependencies": [],
+      "tieringInputs": {
+        "materiality": 2,
+        "complexity": 1
+      },
+      "createdAt": "2026-06-29T18:43:35.811Z",
+      "updatedAt": "2026-06-29T18:43:35.811Z",
+      "tier": "medium",
+      "tierRationale": "Tier medium (composite 2) from materiality=2, complexity=1; non-offsetting max per RBI Para 20."
+    }
+  ]
+}

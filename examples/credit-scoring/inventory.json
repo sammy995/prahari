@@ -1,0 +1,106 @@
+{
+  "version": 1,
+  "models": [
+    {
+      "id": "132f6d3b-8b8b-4fc3-a488-22c6f51680fc",
+      "name": "Application Credit Scorecard",
+      "type": "ml",
+      "intendedUse": "Approve/decline retail loan applications",
+      "isThirdParty": false,
+      "isAi": true,
+      "consumerFacing": true,
+      "lifecycle": "active",
+      "roles": {
+        "owner": "priya",
+        "developer": "dteam",
+        "validator": "vteam",
+        "approver": "cro"
+      },
+      "dependencies": [],
+      "tieringInputs": {
+        "materiality": 3,
+        "complexity": 2
+      },
+      "createdAt": "2026-06-29T18:43:05.963Z",
+      "updatedAt": "2026-06-29T18:43:05.963Z",
+      "tier": "high",
+      "tierRationale": "Tier high (composite 3) from materiality=3, complexity=2; non-offsetting max per RBI Para 20."
+    },
+    {
+      "id": "2506a1cd-7aa7-4ccb-89ab-53c9c50091cb",
+      "name": "Behavioural Scorecard",
+      "type": "ml",
+      "intendedUse": "Set limits and reprice existing customers",
+      "isThirdParty": false,
+      "isAi": true,
+      "consumerFacing": true,
+      "lifecycle": "active",
+      "roles": {
+        "owner": "priya",
+        "developer": "dteam",
+        "validator": "vteam",
+        "approver": "cro"
+      },
+      "dependencies": [],
+      "tieringInputs": {
+        "materiality": 3,
+        "complexity": 2
+      },
+      "createdAt": "2026-06-29T18:43:06.016Z",
+      "updatedAt": "2026-06-29T18:43:06.016Z",
+      "tier": "high",
+      "tierRationale": "Tier high (composite 3) from materiality=3, complexity=2; non-offsetting max per RBI Para 20.",
+      "lastReviewedAt": "2024-06-01T00:00:00.000Z"
+    },
+    {
+      "id": "bd398722-ae10-4a67-adfa-ba820f5508f7",
+      "name": "Bureau Score (vendor)",
+      "type": "ml",
+      "intendedUse": "Third-party credit bureau risk score",
+      "isThirdParty": true,
+      "isAi": true,
+      "consumerFacing": false,
+      "lifecycle": "active",
+      "roles": {
+        "owner": "priya",
+        "developer": "bureauco",
+        "validator": "vteam",
+        "approver": "cro"
+      },
+      "dependencies": [],
+      "tieringInputs": {
+        "materiality": 3,
+        "complexity": 2
+      },
+      "createdAt": "2026-06-29T18:43:06.079Z",
+      "updatedAt": "2026-06-29T18:43:06.079Z",
+      "tier": "high",
+      "tierRationale": "Tier high (composite 3) from materiality=3, complexity=2; non-offsetting max per RBI Para 20."
+    },
+    {
+      "id": "23b36e25-26de-422d-827e-a6686fb34672",
+      "name": "Collections Propensity",
+      "type": "statistical",
+      "intendedUse": "Rank accounts by repayment propensity",
+      "isThirdParty": false,
+      "isAi": false,
+      "consumerFacing": false,
+      "lifecycle": "active",
+      "roles": {
+        "owner": "ops",
+        "developer": "dteam",
+        "validator": "vteam2",
+        "approver": "head"
+      },
+      "dependencies": [],
+      "tieringInputs": {
+        "materiality": 2,
+        "complexity": 1
+      },
+      "createdAt": "2026-06-29T18:43:06.137Z",
+      "updatedAt": "2026-06-29T18:43:06.137Z",
+      "tier": "medium",
+      "tierRationale": "Tier medium (composite 2) from materiality=2, complexity=1; non-offsetting max per RBI Para 20."
+    }
+  ]
+}
