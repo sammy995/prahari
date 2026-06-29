@@ -93,8 +93,8 @@ The [control reference](reference/controls) takes the highest-value paragraphs f
 
 ## Roadmap
 
-- Complete the per-paragraph control reference (Para 1–64).
-- `examples/` per institution type (bank, NBFC, credit scoring, GenAI chatbot, fraud).
+- Expand the per-paragraph control reference toward full Para 1–64 coverage (10 pages today).
+- More `examples/` per institution type (retail bank, NBFC, GenAI chatbot shipped; credit scoring, fraud next).
 - Beyond RBI: a shared control core mapped to NIST AI RMF / ISO 42001 / EU AI Act / SR 11-7 / MAS FEAT.
 - `update` / CSV import / HTML-PDF report; optional API.
 

@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "models": [
+    {
+      "id": "c1cbf313-1140-455e-a6bc-ddac9583b178",
+      "name": "Customer Support Copilot",
+      "type": "genai",
+      "intendedUse": "Answer customer queries, take servicing actions",
+      "isThirdParty": false,
+      "isAi": true,
+      "consumerFacing": true,
+      "lifecycle": "active",
+      "roles": {
+        "owner": "cx",
+        "developer": "aiteam",
+        "validator": "airisk",
+        "approver": "cro"
+      },
+      "dependencies": [],
+      "tieringInputs": {
+        "materiality": 3,
+        "complexity": 3,
+        "autonomy": 3
+      },
+      "createdAt": "2026-06-27T13:46:24.067Z",
+      "updatedAt": "2026-06-27T13:46:24.067Z",
+      "tier": "high",
+      "tierRationale": "Tier high (composite 3) from materiality=3, complexity=3, autonomy=3; non-offsetting max per RBI Para 20."
+    },
+    {
+      "id": "366c03bd-f5ff-4610-8e0f-8dc968f1564f",
+      "name": "Marketing Copy Generator",
+      "type": "genai",
+      "intendedUse": "Draft marketing copy for review",
+      "isThirdParty": false,
+      "isAi": true,
+      "consumerFacing": false,
+      "lifecycle": "active",
+      "roles": {
+        "owner": "mktg",
+        "developer": "aiteam",
+        "validator": "airisk",
+        "approver": "head"
+      },
+      "dependencies": [],
+      "tieringInputs": {
+        "materiality": 1,
+        "complexity": 2,
+        "autonomy": 1
+      },
+      "createdAt": "2026-06-27T13:46:24.134Z",
+      "updatedAt": "2026-06-27T13:46:24.134Z",
+      "tier": "medium",
+      "tierRationale": "Tier medium (composite 2) from materiality=1, complexity=2, autonomy=1; non-offsetting max per RBI Para 20."
+    },
+    {
+      "id": "a909f33e-6f03-4c19-9139-bad68f9343e1",
+      "name": "Internal Policy Q&A Bot",
+      "type": "genai",
+      "intendedUse": "Answer staff policy questions",
+      "isThirdParty": false,
+      "isAi": true,
+      "consumerFacing": false,
+      "lifecycle": "active",
+      "roles": {
+        "owner": "ops",
+        "developer": "aiteam",
+        "validator": "airisk",
+        "approver": "head"
+      },
+      "dependencies": [],
+      "createdAt": "2026-06-27T13:46:24.200Z",
+      "updatedAt": "2026-06-27T13:46:24.200Z"
+    }
+  ]
+}

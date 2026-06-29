@@ -1,0 +1,105 @@
+{
+  "version": 1,
+  "models": [
+    {
+      "id": "2abe5604-5d09-45e5-9674-bb239acd9fb6",
+      "name": "Credit Underwriting Model",
+      "type": "ml",
+      "intendedUse": "Approve/decline unsecured personal loans",
+      "isThirdParty": false,
+      "isAi": true,
+      "consumerFacing": false,
+      "lifecycle": "active",
+      "roles": {
+        "owner": "ravi",
+        "developer": "dteam",
+        "validator": "vteam",
+        "approver": "cro"
+      },
+      "dependencies": [],
+      "tieringInputs": {
+        "materiality": 3,
+        "complexity": 3
+      },
+      "createdAt": "2026-06-27T13:46:23.568Z",
+      "updatedAt": "2026-06-27T13:46:23.568Z",
+      "tier": "high",
+      "tierRationale": "Tier high (composite 3) from materiality=3, complexity=3; non-offsetting max per RBI Para 20."
+    },
+    {
+      "id": "47becbe2-7595-4e16-835b-c76cd5d3aed1",
+      "name": "Income Estimation (vendor)",
+      "type": "ml",
+      "intendedUse": "Estimate income from bank-statement data",
+      "isThirdParty": true,
+      "isAi": true,
+      "consumerFacing": false,
+      "lifecycle": "active",
+      "roles": {
+        "owner": "ravi",
+        "developer": "vendorco",
+        "validator": "vteam",
+        "approver": "cro"
+      },
+      "dependencies": [],
+      "tieringInputs": {
+        "materiality": 3,
+        "complexity": 2
+      },
+      "createdAt": "2026-06-27T13:46:23.637Z",
+      "updatedAt": "2026-06-27T13:46:23.637Z",
+      "tier": "high",
+      "tierRationale": "Tier high (composite 3) from materiality=3, complexity=2; non-offsetting max per RBI Para 20."
+    },
+    {
+      "id": "985e2571-0328-4b0b-9cab-501990bfb2b1",
+      "name": "Collections Prioritisation",
+      "type": "statistical",
+      "intendedUse": "Rank delinquent accounts for outreach",
+      "isThirdParty": false,
+      "isAi": false,
+      "consumerFacing": false,
+      "lifecycle": "active",
+      "roles": {
+        "owner": "ops",
+        "developer": "dteam",
+        "validator": "vteam2",
+        "approver": "head"
+      },
+      "dependencies": [],
+      "tieringInputs": {
+        "materiality": 2,
+        "complexity": 1
+      },
+      "createdAt": "2026-06-27T13:46:23.703Z",
+      "updatedAt": "2026-06-27T13:46:23.703Z",
+      "tier": "medium",
+      "tierRationale": "Tier medium (composite 2) from materiality=2, complexity=1; non-offsetting max per RBI Para 20."
+    },
+    {
+      "id": "c44a99e7-b15a-40b0-8f29-bfe17dbe0586",
+      "name": "KYC Document OCR",
+      "type": "ml",
+      "intendedUse": "Extract fields from KYC documents",
+      "isThirdParty": false,
+      "isAi": true,
+      "consumerFacing": true,
+      "lifecycle": "active",
+      "roles": {
+        "owner": "kyc",
+        "developer": "dteam",
+        "validator": "vteam",
+        "approver": "head"
+      },
+      "dependencies": [],
+      "tieringInputs": {
+        "materiality": 2,
+        "complexity": 2
+      },
+      "createdAt": "2026-06-27T13:46:23.769Z",
+      "updatedAt": "2026-06-27T13:46:23.769Z",
+      "tier": "medium",
+      "tierRationale": "Tier medium (composite 2) from materiality=2, complexity=2; non-offsetting max per RBI Para 20."
+    }
+  ]
+}
