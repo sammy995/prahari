@@ -13,12 +13,16 @@ For the full clause-by-clause table see the [control mapping](../rbi-mrm-2026-co
 | [Para 7(3)](para-07-model-definition.md) | What counts as a "model" (incl. spreadsheets) |
 | [Para 8](para-08-accountability.md) | The RE stays accountable for all models |
 | [Para 9–13](para-09-13-governance.md) | Governance: the MRMF, the Board, the RMCB |
+| [Para 14–16](para-14-16-enterprise-risk.md) | Enterprise-wide model risk + three lines of defence |
 | [Para 17–20](para-17-20-risk-tiering.md) | Risk-based, non-offsetting model tiering |
 | [Para 21–22](para-21-22-inventory.md) | Model inventory and minimum fields |
 | [Para 23](para-23-retention.md) | Ten-year retention of decommissioned models |
 | [Para 26–28](para-26-28-development.md) | Before you build: rationale, cost–benefit, data governance |
 | [Para 29–32](para-29-32-validation.md) | Independent validation of all models |
 | [Para 33](para-33-validation-report-sla.md) | Validation report to the RMCB within three months |
+| [Para 34–35](para-34-35-approval.md) | Approval authority and time-boxed exceptions |
+| [Para 36–37](para-36-37-deployment-monitoring.md) | Deployment and ongoing monitoring |
+| [Para 38–42](para-38-42-change-management.md) | Change management + material-change trigger |
 | [Para 45–48](para-45-48-third-party.md) | Third-party models (validate anyway, audit rights) |
 | [Para 54](para-54-ai-behavioural-explainability.md) | AI behavioural risk + explainability thresholds |
 | [Para 59](para-59-ai-deployment-security.md) | Customer-facing AI: prompt injection, disclosure, handoff |
