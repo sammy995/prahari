@@ -1,0 +1,27 @@
+{
+  "name": "@prahari/crosswalk",
+  "version": "0.1.0",
+  "description": "Framework-neutral Prahari Control Core and crosswalk mappings (RBI MRM 2026 <-> NIST AI RMF, and more).",
+  "type": "module",
+  "license": "Apache-2.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist", "README.md"],
+  "engines": { "node": ">=20.0.0" },
+  "publishConfig": { "access": "public" },
+  "keywords": ["rbi", "nist-ai-rmf", "model-risk", "mrm", "compliance", "ai-governance", "crosswalk", "control-mapping"],
+  "repository": { "type": "git", "url": "git+https://github.com/sammy995/prahari.git", "directory": "packages/crosswalk" },
+  "homepage": "https://github.com/sammy995/prahari/tree/main/packages/crosswalk",
+  "bugs": "https://github.com/sammy995/prahari/issues",
+  "author": "sammy995",
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "vitest": "^4.0.18"
+  }
+}

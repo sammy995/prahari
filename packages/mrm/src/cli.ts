@@ -17,7 +17,7 @@ import type { FactorScore } from '@prahari/rbi-tiering';
 import { LifecycleState, ModelType, type ModelTieringInputs } from './model.js';
 import { addModel, listModels } from './inventory.js';
 import { runChecks } from './checks.js';
-import { renderReport } from './report.js';
+import { renderReport, renderFrameworkReport } from './report.js';
 import { DEFAULT_STORE_PATH, loadInventory, saveInventory } from './store.js';
 
 const program = new Command();
@@ -111,10 +111,13 @@ program
   .description('Generate an examiner-ready Markdown report')
   .option('--org <name>', 'organisation name')
   .option('--out <path>', 'write to file instead of stdout')
+  .option('--framework <id>', 'also render a framework view (e.g. nist-ai-rmf)')
   .option('-f, --file <path>', 'inventory file', DEFAULT_STORE_PATH)
   .action((opts) => {
     const inv = loadInventory(opts.file);
-    const md = renderReport(inv, { organisation: opts.org });
+    const md = opts.framework
+      ? renderFrameworkReport(inv, opts.framework, { organisation: opts.org })
+      : renderReport(inv, { organisation: opts.org });
     if (opts.out) {
       writeFileSync(opts.out, md, 'utf8');
       console.log(`Report written to ${opts.out}`);

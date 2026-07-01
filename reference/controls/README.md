@@ -6,6 +6,8 @@ Per-paragraph implementation guidance for the RBI Draft *Guidance on Regulatory 
 
 These pages cover the guidance **end to end (Para 1–63)** in 24 citeable units. For the condensed clause-by-clause table see the [control mapping](../rbi-mrm-2026-control-mapping.md).
 
+See also the [framework crosswalk](../crosswalk) — the same controls mapped to NIST AI RMF (more frameworks planned).
+
 ## Pages
 
 | Paragraph(s) | Topic |
