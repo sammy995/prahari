@@ -97,6 +97,15 @@ What this example demonstrates:
 - **[Para 59](../reference/controls/para-59-ai-deployment-security.md):** the customer-facing copilot is where prompt-injection controls, AI disclosure, and a human-handoff path are required.
 - **[Para 17/21](../reference/controls/para-21-22-inventory.md):** the untiered internal bot is flagged — a live model with no tier is a governance gap, not a free pass.
 
+Render the same inventory as a **NIST AI RMF crosswalk view**:
+
+```bash
+node packages/mrm/dist/cli.js report --file examples/genai-chatbot/inventory.json \
+  --framework nist-ai-rmf --org "Demo Bank — GenAI" --out examples/genai-chatbot/report.nist-ai-rmf.md
+```
+
+This appends a "Framework view — NIST AI RMF" section (**alignment, not compliance**) plus the deltas NIST adds beyond the Prahari core. See the [crosswalk](../reference/crosswalk). Output: [`report.nist-ai-rmf.md`](genai-chatbot/report.nist-ai-rmf.md).
+
 ## credit-scoring
 
 A bank's credit-decision estate — an application scorecard, a behavioural (limit/repricing) scorecard, a **third-party** bureau score, and a collections-propensity model. Three are *high* tier: credit decisions are inherently material and consumer-facing.
