@@ -6,7 +6,7 @@
 
 Implementing the Prahari Control Core covers the **shared backbone** of EU AI Act. It does **not** make you "EU AI Act compliant"; the deltas below are obligations the core does not cover.
 
-**Coverage:** 12 EU AI Act clauses mapped · 3 deltas · 22 core controls.
+**Coverage:** 12 EU AI Act clauses mapped · 4 deltas · 22 core controls.
 
 ## Core control → EU AI Act
 
@@ -17,7 +17,7 @@ Implementing the Prahari Control Core covers the **shared backbone** of EU AI Ac
 | `LIFE-01` Pre-development discipline | Para 26, 27, 28 | Art. 10 — Data and data governance | partial | Data and data governance (quality, bias examination). |
 | `INV-04` Model documentation | Para 24 | Art. 11 — Technical documentation | partial | Technical documentation (Annex IV) ≈ model documentation. |
 | `AISEC-01` AI deployment security baseline | Para 58 | Art. 12 — Record-keeping (logging) | partial | Automatic record-keeping / logging. |
-| `CONS-01` Consumer protection | Para 25 | Art. 13 — Transparency and provision of information to deployers | partial | Transparency and information to deployers/users. |
+| `CONS-01` Consumer protection | Para 25 | Art. 86 — Right to explanation of individual decision-making | partial | Affected persons’ right to an explanation of a decision ≈ consumer protection + grievance redressal. |
 | `HO-01` Human oversight + kill switch | Para 60 | Art. 14 — Human oversight | partial | Human oversight incl. the ability to intervene/stop; RBI mandates a kill switch. |
 | `AIR-05` Explainability thresholds + behavioural risk | Para 54 | Art. 15 — Accuracy, robustness and cybersecurity | partial | Accuracy, robustness and cybersecurity; RBI adds explicit explainability thresholds. |
 | `GOV-01` Board-approved MRMF + RMCB | Para 9, 10, 11, 12, 13 | Art. 17 — Quality management system | partial | Quality management system ≈ board-approved MRMF. |
@@ -31,6 +31,7 @@ Implementing the Prahari Control Core covers the **shared backbone** of EU AI Ac
 
 | EU AI Act | Title | Status |
 | --- | --- | --- |
+| Art. 13 | Transparency and provision of information to deployers | _No Prahari core control — assess separately._ |
 | Art. 43 | Conformity assessment | _No Prahari core control — assess separately._ |
 | Art. 48 | CE marking of conformity | _No Prahari core control — assess separately._ |
 | Art. 49 | Registration in the EU database | _No Prahari core control — assess separately._ |

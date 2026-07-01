@@ -7,7 +7,13 @@ import type { ControlCore } from './types.js';
  * deriveCoverage) — never asserted here.
  *
  * Mappings are a conservative interpretation (default `partial`) and must be
- * re-verified against the NIST AI RMF 1.0 Core/Playbook and the final RBI text.
+ * re-verified against each framework's source text and the final RBI text.
+ *
+ * Source-check log:
+ *   2026-07-01 — EU AI Act article numbers/titles (Art. 9-15, 17, 26, 43, 48,
+ *   49, 50, 72, 73, 86) and NIST GOVERN 1.6 (AI inventory) / MANAGE 2.4
+ *   (deactivate) verified against official sources. ISO 42001, SR 11-7, MAS
+ *   FEAT remain to be expert-reviewed.
  */
 export const controlCore: ControlCore = {
   version: 1,
@@ -133,6 +139,7 @@ export const controlCore: ControlCore = {
     { framework: 'eu-ai-act', ref: 'Art. 50', title: 'Transparency obligations (e.g. disclose AI interaction)', category: 'Ch.IV Transparency' },
     { framework: 'eu-ai-act', ref: 'Art. 72', title: 'Post-market monitoring', category: 'Ch.IX Monitoring' },
     { framework: 'eu-ai-act', ref: 'Art. 73', title: 'Reporting of serious incidents', category: 'Ch.IX Monitoring' },
+    { framework: 'eu-ai-act', ref: 'Art. 86', title: 'Right to explanation of individual decision-making', category: 'Ch.IX Remedies' },
 
     // MAS FEAT Principles (2018) — Fairness, Ethics, Accountability, Transparency.
     { framework: 'mas-feat', ref: 'F1', title: 'Fairness: use of data and models is justifiable', category: 'Fairness' },
@@ -228,7 +235,7 @@ export const controlCore: ControlCore = {
     { coreControlId: 'LIFE-01', framework: 'eu-ai-act', clauseRef: 'Art. 10', relationship: 'partial', note: 'Data and data governance (quality, bias examination).' },
     { coreControlId: 'INV-04', framework: 'eu-ai-act', clauseRef: 'Art. 11', relationship: 'partial', note: 'Technical documentation (Annex IV) ≈ model documentation.' },
     { coreControlId: 'AISEC-01', framework: 'eu-ai-act', clauseRef: 'Art. 12', relationship: 'partial', note: 'Automatic record-keeping / logging.' },
-    { coreControlId: 'CONS-01', framework: 'eu-ai-act', clauseRef: 'Art. 13', relationship: 'partial', note: 'Transparency and information to deployers/users.' },
+    { coreControlId: 'CONS-01', framework: 'eu-ai-act', clauseRef: 'Art. 86', relationship: 'partial', note: 'Affected persons’ right to an explanation of a decision ≈ consumer protection + grievance redressal.' },
     { coreControlId: 'HO-01', framework: 'eu-ai-act', clauseRef: 'Art. 14', relationship: 'partial', note: 'Human oversight incl. the ability to intervene/stop; RBI mandates a kill switch.' },
     { coreControlId: 'AIR-05', framework: 'eu-ai-act', clauseRef: 'Art. 15', relationship: 'partial', note: 'Accuracy, robustness and cybersecurity; RBI adds explicit explainability thresholds.' },
     { coreControlId: 'GOV-01', framework: 'eu-ai-act', clauseRef: 'Art. 17', relationship: 'partial', note: 'Quality management system ≈ board-approved MRMF.' },

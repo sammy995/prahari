@@ -708,6 +708,12 @@
       "category": "Ch.IX Monitoring"
     },
     {
+      "framework": "eu-ai-act",
+      "ref": "Art. 86",
+      "title": "Right to explanation of individual decision-making",
+      "category": "Ch.IX Remedies"
+    },
+    {
       "framework": "mas-feat",
       "ref": "F1",
       "title": "Fairness: use of data and models is justifiable",
@@ -1270,9 +1276,9 @@
     {
       "coreControlId": "CONS-01",
       "framework": "eu-ai-act",
-      "clauseRef": "Art. 13",
+      "clauseRef": "Art. 86",
       "relationship": "partial",
-      "note": "Transparency and information to deployers/users."
+      "note": "Affected persons’ right to an explanation of a decision ≈ consumer protection + grievance redressal."
     },
     {
       "coreControlId": "HO-01",

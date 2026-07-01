@@ -1,6 +1,6 @@
 # Model Risk Management Report — Demo Bank — GenAI
 
-_Generated 2026-07-01T17:54:46.486Z · RBI MRM 2026 (draft) · Prahari_
+_Generated 2026-07-01T18:12:10.623Z · RBI MRM 2026 (draft) · Prahari_
 
 > Not legal advice; not an RBI publication; no guarantee of compliance. The Regulated Entity remains accountable for its models (RBI Para 8).
 
@@ -45,7 +45,7 @@ This report is generated from the RE's own model inventory. High-risk models req
 | LIFE-01 Pre-development discipline | Para 26, 27, 28 | Art. 10 | partial |
 | INV-04 Model documentation | Para 24 | Art. 11 | partial |
 | AISEC-01 AI deployment security baseline | Para 58 | Art. 12 | partial |
-| CONS-01 Consumer protection | Para 25 | Art. 13 | partial |
+| CONS-01 Consumer protection | Para 25 | Art. 86 | partial |
 | HO-01 Human oversight + kill switch | Para 60 | Art. 14 | partial |
 | AIR-05 Explainability thresholds + behavioural risk | Para 54 | Art. 15 | partial |
 | GOV-01 Board-approved MRMF + RMCB | Para 9, 10, 11, 12, 13 | Art. 17 | partial |
@@ -59,6 +59,7 @@ This report is generated from the RE's own model inventory. High-risk models req
 
 | EU AI Act | Title |
 | --- | --- |
+| Art. 13 | Transparency and provision of information to deployers |
 | Art. 43 | Conformity assessment |
 | Art. 48 | CE marking of conformity |
 | Art. 49 | Registration in the EU database |
