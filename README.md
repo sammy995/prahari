@@ -107,10 +107,16 @@ The [control reference](reference/controls) covers the RBI guidance **end to end
 
 ## Roadmap
 
-- Deepen the per-paragraph control reference (24 pages, full Para 1–63 coverage today); refine against the final RBI notification.
-- More `examples/` per institution type (retail bank, NBFC, GenAI chatbot, credit scoring, fraud detection shipped; more welcome).
-- Beyond RBI: a shared control core mapped to NIST AI RMF / ISO 42001 / EU AI Act / SR 11-7 / MAS FEAT.
-- `update` / CSV import / HTML-PDF report; optional API.
+**Shipped**
+- ✅ Per-paragraph control reference — full **Para 1–63** coverage (24 pages).
+- ✅ `examples/` across institution types — retail bank, NBFC, GenAI, credit scoring, fraud detection.
+- ✅ **Multi-framework crosswalk** — a shared control core mapped to **NIST AI RMF · ISO/IEC 42001 · SR 11-7**, coverage/deltas derived (see [reference/crosswalk](reference/crosswalk)).
+- ✅ CI (build · test · typecheck · crosswalk drift · link check).
+
+**Next**
+- More crosswalk frameworks: **EU AI Act · MAS FEAT** (one data edit + regenerate each).
+- Toolkit: `update` command, **CSV import**, HTML/PDF report export; optional API.
+- Refine every mapping against the final RBI notification when issued.
 
 ## Principles
 
