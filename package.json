@@ -1,12 +1,13 @@
 {
   "name": "prahari-workspace",
   "private": true,
-  "workspaces": ["packages/*"],
+  "workspaces": ["packages/rbi-tiering", "packages/crosswalk", "packages/mrm"],
   "scripts": {
     "build": "npm run build -w packages/rbi-tiering && npm run build -w packages/crosswalk && npm run build -w packages/mrm",
     "test": "npm run test -w packages/rbi-tiering && npm run test -w packages/crosswalk && npm run test -w packages/mrm",
     "typecheck": "npm run typecheck -w packages/rbi-tiering && npm run typecheck -w packages/crosswalk && npm run typecheck -w packages/mrm",
     "crosswalk:gen": "node scripts/generate-crosswalk.mjs",
-    "crosswalk:check": "node scripts/generate-crosswalk.mjs --check"
+    "crosswalk:check": "node scripts/generate-crosswalk.mjs --check",
+    "links:check": "node scripts/check-links.mjs"
   }
 }
