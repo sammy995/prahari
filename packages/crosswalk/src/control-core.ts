@@ -98,6 +98,22 @@ export const controlCore: ControlCore = {
     { framework: 'iso-42001', ref: 'A.9.2', title: 'Processes for responsible use of AI systems', category: 'A.9 Use of AI systems' },
     { framework: 'iso-42001', ref: 'A.10.3', title: 'Suppliers', category: 'A.10 Third-party relationships' },
     { framework: 'iso-42001', ref: 'A.10.4', title: 'Customers', category: 'A.10 Third-party relationships' },
+
+    // Federal Reserve / OCC SR 11-7 (2011) — Guidance on Model Risk Management.
+    // Section-based references; clauses with no mapping surface as deltas.
+    { framework: 'sr-11-7', ref: 'II', title: 'Sources of model risk and the culture of effective challenge', category: 'II Purpose & background' },
+    { framework: 'sr-11-7', ref: 'III', title: 'Model development, implementation, and use', category: 'III Development' },
+    { framework: 'sr-11-7', ref: 'IV.1', title: 'Validation: evaluation of conceptual soundness', category: 'IV Validation' },
+    { framework: 'sr-11-7', ref: 'IV.2', title: 'Validation: ongoing monitoring', category: 'IV Validation' },
+    { framework: 'sr-11-7', ref: 'IV.3', title: 'Validation: outcomes analysis and benchmarking', category: 'IV Validation' },
+    { framework: 'sr-11-7', ref: 'V.1', title: 'Governance: board and senior management oversight', category: 'V Governance' },
+    { framework: 'sr-11-7', ref: 'V.2', title: 'Policies and procedures (incl. risk-based model rating)', category: 'V Governance' },
+    { framework: 'sr-11-7', ref: 'V.3', title: 'Roles and responsibilities', category: 'V Governance' },
+    { framework: 'sr-11-7', ref: 'V.4', title: 'Internal audit', category: 'V Governance' },
+    { framework: 'sr-11-7', ref: 'V.5', title: 'External resources and vendor models', category: 'V Governance' },
+    { framework: 'sr-11-7', ref: 'V.6', title: 'Documentation', category: 'V Governance' },
+    { framework: 'sr-11-7', ref: 'V.7', title: 'Model inventory', category: 'V Governance' },
+    { framework: 'sr-11-7', ref: 'VI', title: 'Supervisory review of model risk management', category: 'VI Supervision' },
   ],
 
   mappings: [
@@ -156,5 +172,22 @@ export const controlCore: ControlCore = {
     { coreControlId: 'HO-02', framework: 'iso-42001', clauseRef: 'A.9.2', relationship: 'partial', note: 'Responsible-use processes (human factors).' },
     { coreControlId: 'TPM-01', framework: 'iso-42001', clauseRef: 'A.10.3', relationship: 'partial', note: 'Supplier management; RBI mandates independent RE validation + audit rights.' },
     { coreControlId: 'CONS-01', framework: 'iso-42001', clauseRef: 'A.10.4', relationship: 'partial', note: 'Customer obligations ≈ consumer protection/grievance redressal.' },
+
+    // SR 11-7 mappings. RBI MRM is SR 11-7's conceptual descendant, so these are
+    // close; RBI adds AI-specific controls (AIR/AISEC/HO) SR 11-7 predates.
+    { coreControlId: 'LIFE-01', framework: 'sr-11-7', clauseRef: 'III', relationship: 'partial', note: 'Sound development process with documented purpose/design.' },
+    { coreControlId: 'LIFE-05', framework: 'sr-11-7', clauseRef: 'III', relationship: 'partial', note: 'Controlled implementation/use and change.' },
+    { coreControlId: 'LIFE-02', framework: 'sr-11-7', clauseRef: 'IV.1', relationship: 'partial', note: 'Independent validation ≈ conceptual soundness evaluation.' },
+    { coreControlId: 'LIFE-02', framework: 'sr-11-7', clauseRef: 'IV.3', relationship: 'partial', note: 'Outcomes analysis/benchmarking within validation.' },
+    { coreControlId: 'LIFE-04', framework: 'sr-11-7', clauseRef: 'IV.2', relationship: 'partial', note: 'Continuous ongoing monitoring of deployed models.' },
+    { coreControlId: 'GOV-01', framework: 'sr-11-7', clauseRef: 'V.1', relationship: 'partial', note: 'Board/senior-management oversight of model risk.' },
+    { coreControlId: 'GOV-00', framework: 'sr-11-7', clauseRef: 'V.1', relationship: 'partial', note: 'Accountability sits with the institution/board.' },
+    { coreControlId: 'LIFE-03', framework: 'sr-11-7', clauseRef: 'V.1', relationship: 'partial', note: 'Approval authority under governance; RBI adds an explicit RMCB + time-boxed exceptions.' },
+    { coreControlId: 'TIER-01', framework: 'sr-11-7', clauseRef: 'V.2', relationship: 'partial', note: 'Risk-based model rating; RBI adds a strict non-offsetting rule.' },
+    { coreControlId: 'GOV-02', framework: 'sr-11-7', clauseRef: 'V.3', relationship: 'partial', note: 'Roles/responsibilities across the three lines.' },
+    { coreControlId: 'GOV-02', framework: 'sr-11-7', clauseRef: 'V.4', relationship: 'partial', note: 'Independent internal audit as the third line.' },
+    { coreControlId: 'TPM-01', framework: 'sr-11-7', clauseRef: 'V.5', relationship: 'partial', note: 'Vendor/external model management; RBI adds mandatory independent validation + audit rights.' },
+    { coreControlId: 'INV-04', framework: 'sr-11-7', clauseRef: 'V.6', relationship: 'partial', note: 'Comprehensive model documentation.' },
+    { coreControlId: 'INV-01', framework: 'sr-11-7', clauseRef: 'V.7', relationship: 'partial', note: 'Model inventory covering all models.' },
   ],
 };

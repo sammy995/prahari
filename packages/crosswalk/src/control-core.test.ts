@@ -32,4 +32,10 @@ describe('controlCore data', () => {
     expect(cov.mappedClauses.length).toBeGreaterThan(0);
     expect(cov.deltaClauses.length).toBeGreaterThan(0);
   });
+
+  it('has SR 11-7 clauses and at least one delta (honesty check)', () => {
+    const cov = deriveCoverage(controlCore, 'sr-11-7');
+    expect(cov.mappedClauses.length).toBeGreaterThan(0);
+    expect(cov.deltaClauses.length).toBeGreaterThan(0);
+  });
 });
