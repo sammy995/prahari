@@ -12,8 +12,17 @@ import type { ControlCore } from './types.js';
  * Source-check log:
  *   2026-07-01 — EU AI Act article numbers/titles (Art. 9-15, 17, 26, 43, 48,
  *   49, 50, 72, 73, 86) and NIST GOVERN 1.6 (AI inventory) / MANAGE 2.4
- *   (deactivate) verified against official sources. ISO 42001, SR 11-7, MAS
- *   FEAT remain to be expert-reviewed.
+ *   (deactivate) verified against official sources.
+ *   2026-07-02 — ISO/IEC 42001:2023 Annex A structure verified (38 controls,
+ *   objectives A.2 policy, A.3 org, A.4 resources, A.5 impact assessment,
+ *   A.6 life cycle, A.7 data, A.8 information, A.9 responsible use, A.10
+ *   third-party) — control numbers used are correct. SR 11-7 section
+ *   structure verified (III development; IV validation = conceptual soundness
+ *   / ongoing monitoring / outcomes analysis; V governance; VI supervision);
+ *   the `IV.n`/`V.n` refs are a section+component enumeration, not official
+ *   subsection numbers. MAS FEAT four pillars verified; `F/E/A/T` refs are a
+ *   pillar-grouped convention (the source numbers its principles 1-13
+ *   continuously). No data errors found; titles/relationships unchanged.
  */
 export const controlCore: ControlCore = {
   version: 1,
