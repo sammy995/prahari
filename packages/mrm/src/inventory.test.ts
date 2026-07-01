@@ -8,6 +8,7 @@ import {
   isRegistered,
   listModels,
   tierModel,
+  updateModel,
   type AddModelInput,
 } from './inventory.js';
 
@@ -95,5 +96,36 @@ describe('inventory gate + lifecycle (Para 21, 23)', () => {
   it('throws when using a model not in inventory (Para 21)', () => {
     const inv = emptyInventory();
     expect(() => tierModel(inv, 'ghost')).toThrow(/not in inventory/);
+  });
+});
+
+describe('updateModel', () => {
+  it('re-tiers when tiering inputs change', () => {
+    const inv = emptyInventory();
+    const m = addModel(inv, validInput({ tieringInputs: { materiality: 1, complexity: 1 } }));
+    expect(m.tier).toBe(ModelTier.Low);
+    updateModel(inv, m.id, { tieringInputs: { materiality: 3 } });
+    expect(getModel(inv, m.id)!.tier).toBe(ModelTier.High); // 3 wins (non-offsetting)
+  });
+
+  it('re-checks validator independence on a role change', () => {
+    const inv = emptyInventory();
+    const m = addModel(inv, validInput());
+    expect(() => updateModel(inv, m.id, { roles: { validator: 'bob' } })).toThrow(
+      /independent of the developer/,
+    );
+  });
+
+  it('updates lifecycle and bumps updatedAt', () => {
+    const inv = emptyInventory();
+    const m = addModel(inv, validInput(), new Date('2026-06-01'));
+    updateModel(inv, m.id, { lifecycle: LifecycleState.Active }, new Date('2026-07-01'));
+    const got = getModel(inv, m.id)!;
+    expect(got.lifecycle).toBe(LifecycleState.Active);
+    expect(got.updatedAt).toBe('2026-07-01T00:00:00.000Z');
+  });
+
+  it('throws for an unknown id (Para 21)', () => {
+    expect(() => updateModel(emptyInventory(), 'nope', { isAi: true })).toThrow(MrmValidationError);
   });
 });

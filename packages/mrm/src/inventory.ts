@@ -145,6 +145,51 @@ export function tierModel(
   return m;
 }
 
+export interface UpdateModelInput {
+  intendedUse?: string;
+  isThirdParty?: boolean;
+  isAi?: boolean;
+  consumerFacing?: boolean;
+  lifecycle?: LifecycleState;
+  roles?: Partial<ModelRoles>;
+  tieringInputs?: Partial<ModelTieringInputs>;
+}
+
+/**
+ * Patch a model in place. Changing roles re-checks validator independence;
+ * changing tiering inputs re-tiers the model (Para 17-20). Only provided
+ * fields change.
+ */
+export function updateModel(
+  inv: Inventory,
+  id: string,
+  patch: UpdateModelInput,
+  now: Date = new Date(),
+): ModelRecord {
+  const m = requireModel(inv, id);
+  if (patch.intendedUse !== undefined) m.intendedUse = patch.intendedUse.trim();
+  if (patch.isThirdParty !== undefined) m.isThirdParty = patch.isThirdParty;
+  if (patch.isAi !== undefined) m.isAi = patch.isAi;
+  if (patch.consumerFacing !== undefined) m.consumerFacing = patch.consumerFacing;
+  if (patch.lifecycle !== undefined) m.lifecycle = patch.lifecycle;
+  if (patch.roles) {
+    m.roles = { ...m.roles, ...patch.roles };
+    assertValidatorIndependence(m.roles);
+  }
+  if (patch.tieringInputs) {
+    const merged = { ...(m.tieringInputs ?? {}), ...patch.tieringInputs };
+    if (merged.materiality === undefined || merged.complexity === undefined) {
+      throw new MrmValidationError('Tiering needs materiality and complexity (RBI Para 19).');
+    }
+    m.tieringInputs = merged as ModelTieringInputs;
+    const result = computeTier(tieringToInput(m.tieringInputs, m.isAi));
+    m.tier = result.tier;
+    m.tierRationale = result.rationale;
+  }
+  m.updatedAt = now.toISOString();
+  return m;
+}
+
 /** Decommission a model. It stays in inventory for retention (Para 23). */
 export function decommissionModel(
   inv: Inventory,
