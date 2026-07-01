@@ -1,6 +1,6 @@
 {
   "name": "@prahari/mrm",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Local-first RBI Model Risk Management toolkit: model inventory, risk tiering, compliance checks, and examiner-ready reports.",
   "type": "module",
   "license": "Apache-2.0",
