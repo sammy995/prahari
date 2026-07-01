@@ -1,0 +1,114 @@
+import type { ControlCore } from './types.js';
+
+/**
+ * The Prahari Control Core: framework-neutral controls seeded from the RBI MRM
+ * 2026 control taxonomy, plus the NIST AI RMF 1.0 subcategory catalog and the
+ * mappings between them. Coverage and deltas are DERIVED from this data (see
+ * deriveCoverage) — never asserted here.
+ *
+ * Mappings are a conservative interpretation (default `partial`) and must be
+ * re-verified against the NIST AI RMF 1.0 Core/Playbook and the final RBI text.
+ */
+export const controlCore: ControlCore = {
+  version: 1,
+  coreControls: [
+    // Governance
+    { id: 'GOV-00', cluster: 'GOV', title: 'RE accountability', summary: 'The Regulated Entity remains accountable for all models, at every lifecycle stage.', rbiParas: ['8'], referencePage: 'reference/controls/para-08-accountability.md' },
+    { id: 'GOV-01', cluster: 'GOV', title: 'Board-approved MRMF + RMCB', summary: 'A versioned, board-approved model-risk framework; the RMCB approves high-risk models and reviews tiering.', rbiParas: ['9', '10', '11', '12', '13'], referencePage: 'reference/controls/para-09-13-governance.md' },
+    { id: 'GOV-02', cluster: 'GOV', title: 'Enterprise risk + three lines of defence', summary: 'Aggregate model risk against appetite; independent owner / validation / audit lines.', rbiParas: ['14', '15', '16'], referencePage: 'reference/controls/para-14-16-enterprise-risk.md' },
+    // Tiering
+    { id: 'TIER-01', cluster: 'TIER', title: 'Risk-based non-offsetting tiering', summary: 'Tier every model on materiality + complexity (+ autonomy); one low factor cannot offset a high one.', rbiParas: ['17', '18', '19', '20'], referencePage: 'reference/controls/para-17-20-risk-tiering.md' },
+    // Inventory / documentation
+    { id: 'INV-01', cluster: 'INV', title: 'Complete model inventory', summary: 'No model used unless inventoried; required fields and dependencies per model.', rbiParas: ['21', '22'], referencePage: 'reference/controls/para-21-22-inventory.md' },
+    { id: 'INV-03', cluster: 'INV', title: 'Ten-year retention', summary: 'Retain decommissioned models in the inventory for at least ten years.', rbiParas: ['23'], referencePage: 'reference/controls/para-23-retention.md' },
+    { id: 'INV-04', cluster: 'INV', title: 'Model documentation', summary: 'Comprehensive documentation for all models, including third-party, retained with the inventory.', rbiParas: ['24'], referencePage: 'reference/controls/para-24-25-documentation-consumer.md' },
+    // Lifecycle
+    { id: 'LIFE-01', cluster: 'LIFE', title: 'Pre-development discipline', summary: 'Documented rationale/scope; cost-benefit incl. bias/fairness/ethics; data governance.', rbiParas: ['26', '27', '28'], referencePage: 'reference/controls/para-26-28-development.md' },
+    { id: 'LIFE-02', cluster: 'LIFE', title: 'Independent validation', summary: 'Independent RE validation of all models pre/post-deploy, on change, periodically; report to RMCB within 3 months.', rbiParas: ['29', '30', '31', '32', '33'], referencePage: 'reference/controls/para-29-32-validation.md' },
+    { id: 'LIFE-03', cluster: 'LIFE', title: 'Approval authority + exceptions', summary: 'Tier-based approval authority (high → RMCB); time-boxed exceptions with remediation.', rbiParas: ['34', '35'], referencePage: 'reference/controls/para-34-35-approval.md' },
+    { id: 'LIFE-04', cluster: 'LIFE', title: 'Deployment + ongoing monitoring', summary: 'Replicable/stable deployment; continuous monitoring of all deployed models.', rbiParas: ['36', '37'], referencePage: 'reference/controls/para-36-37-deployment-monitoring.md' },
+    { id: 'LIFE-05', cluster: 'LIFE', title: 'Change management', summary: 'Controlled change with impact assessment; material change reopens validation + approval.', rbiParas: ['38', '39', '40', '41', '42'], referencePage: 'reference/controls/para-38-42-change-management.md' },
+    { id: 'LIFE-06', cluster: 'LIFE', title: 'Business continuity + decommissioning', summary: 'Per-model fallback (manual/substitute/backup); orderly, notified decommissioning.', rbiParas: ['43', '44'], referencePage: 'reference/controls/para-43-44-bcp-decommissioning.md' },
+    // Third-party
+    { id: 'TPM-01', cluster: 'TPM', title: 'Third-party accountability + validation', summary: 'RE validates bought models anyway; RMCB oversight regardless of tier; due diligence + audit rights.', rbiParas: ['45', '46', '47', '48'], referencePage: 'reference/controls/para-45-48-third-party.md' },
+    // AI/ML risk
+    { id: 'AIR-01', cluster: 'AIR', title: 'AI scope, autonomy, supply chain', summary: 'Define AI scope; autonomy/reliance as a tier driver; third-party AI supply-chain risk.', rbiParas: ['49', '50', '51', '52', '53'], referencePage: 'reference/controls/para-49-53-ai-scope-autonomy.md' },
+    { id: 'AIR-05', cluster: 'AIR', title: 'Explainability thresholds + behavioural risk', summary: 'Per-model explainability thresholds; adversarial testing; bias, drift, hallucination controls.', rbiParas: ['54'], referencePage: 'reference/controls/para-54-ai-behavioural-explainability.md' },
+    { id: 'AIR-13', cluster: 'AIR', title: 'Red-teaming, auto-update, AI documentation', summary: 'Structured challenge/red-teaming; bounded auto-updates; reproducible AI documentation.', rbiParas: ['55', '56', '57'], referencePage: 'reference/controls/para-55-57-redteam-autoupdate-docs.md' },
+    // AI deployment security
+    { id: 'AISEC-01', cluster: 'AISEC', title: 'AI deployment security baseline', summary: 'No new vulnerabilities; secure access, interfaces, APIs and integrations.', rbiParas: ['58'], referencePage: 'reference/controls/para-58-ai-security-baseline.md' },
+    { id: 'AISEC-02', cluster: 'AISEC', title: 'Customer-facing AI controls', summary: 'Prompt-injection controls, AI disclosure, human-handoff for customer-facing AI.', rbiParas: ['59'], referencePage: 'reference/controls/para-59-ai-deployment-security.md' },
+    // Human oversight
+    { id: 'HO-01', cluster: 'HO', title: 'Human oversight + kill switch', summary: 'Human-in-command; override/suspend/deactivate (kill switch); periodic anomaly review.', rbiParas: ['60'], referencePage: 'reference/controls/para-60-human-oversight.md' },
+    { id: 'HO-02', cluster: 'HO', title: 'Human factors', summary: 'Guard against automation bias/fatigue; competent reviewers; periodic override/near-miss review.', rbiParas: ['61', '62', '63'], referencePage: 'reference/controls/para-61-63-human-factors.md' },
+    // Consumer
+    { id: 'CONS-01', cluster: 'CONS', title: 'Consumer protection', summary: 'No consumer-harming models; grievance redressal for consumer-facing models.', rbiParas: ['25'], referencePage: 'reference/controls/para-24-25-documentation-consumer.md' },
+  ],
+
+  // NIST AI RMF 1.0 (Jan 2023) subcategories considered. Clauses with no mapping
+  // below surface as deltas (obligations the Prahari core does not cover).
+  frameworkClauses: [
+    { framework: 'nist-ai-rmf', ref: 'GOVERN 1.1', title: 'Legal and regulatory requirements involving AI are understood, managed, documented', category: 'GOVERN' },
+    { framework: 'nist-ai-rmf', ref: 'GOVERN 1.2', title: 'Characteristics of trustworthy AI integrated into policies and processes', category: 'GOVERN' },
+    { framework: 'nist-ai-rmf', ref: 'GOVERN 1.6', title: 'Mechanisms are in place to inventory AI systems', category: 'GOVERN' },
+    { framework: 'nist-ai-rmf', ref: 'GOVERN 2.1', title: 'Roles, responsibilities, and lines of authority are documented', category: 'GOVERN' },
+    { framework: 'nist-ai-rmf', ref: 'GOVERN 3.2', title: 'Policies and procedures for human oversight of AI', category: 'GOVERN' },
+    { framework: 'nist-ai-rmf', ref: 'GOVERN 5.1', title: 'Mechanisms to collect and consider external feedback', category: 'GOVERN' },
+    { framework: 'nist-ai-rmf', ref: 'GOVERN 6.1', title: 'Policies and procedures for third-party (data/model) risk', category: 'GOVERN' },
+    { framework: 'nist-ai-rmf', ref: 'GOVERN 6.2', title: 'Contingency processes for failures of third-party resources', category: 'GOVERN' },
+    { framework: 'nist-ai-rmf', ref: 'MAP 1.1', title: 'Intended purpose and context of use are established and documented', category: 'MAP' },
+    { framework: 'nist-ai-rmf', ref: 'MAP 2.3', title: 'Scientific integrity and TEVV considerations are identified', category: 'MAP' },
+    { framework: 'nist-ai-rmf', ref: 'MAP 3.4', title: 'Human oversight of the AI system is defined and mapped', category: 'MAP' },
+    { framework: 'nist-ai-rmf', ref: 'MAP 4.1', title: 'Third-party technology risks are mapped', category: 'MAP' },
+    { framework: 'nist-ai-rmf', ref: 'MEASURE 1.1', title: 'Approaches and metrics for measurement are identified', category: 'MEASURE' },
+    { framework: 'nist-ai-rmf', ref: 'MEASURE 2.3', title: 'AI system performance and assurance are evaluated', category: 'MEASURE' },
+    { framework: 'nist-ai-rmf', ref: 'MEASURE 2.5', title: 'AI system is validated and verified; results documented', category: 'MEASURE' },
+    { framework: 'nist-ai-rmf', ref: 'MEASURE 2.6', title: 'AI system safety risks are evaluated', category: 'MEASURE' },
+    { framework: 'nist-ai-rmf', ref: 'MEASURE 2.7', title: 'AI system security and resilience are evaluated', category: 'MEASURE' },
+    { framework: 'nist-ai-rmf', ref: 'MEASURE 2.8', title: 'Transparency and accountability are examined and documented', category: 'MEASURE' },
+    { framework: 'nist-ai-rmf', ref: 'MEASURE 2.9', title: 'AI model is explained, validated, and documented for interpretability', category: 'MEASURE' },
+    { framework: 'nist-ai-rmf', ref: 'MEASURE 2.11', title: 'Fairness and bias are evaluated and results documented', category: 'MEASURE' },
+    { framework: 'nist-ai-rmf', ref: 'MEASURE 3.1', title: 'Approaches for tracking emergent risks are in place', category: 'MEASURE' },
+    { framework: 'nist-ai-rmf', ref: 'MANAGE 1.2', title: 'Treatment of documented AI risks is prioritized', category: 'MANAGE' },
+    { framework: 'nist-ai-rmf', ref: 'MANAGE 2.1', title: 'Resources are allocated to manage AI risks', category: 'MANAGE' },
+    { framework: 'nist-ai-rmf', ref: 'MANAGE 2.3', title: 'Mechanisms are in place to sustain the value of deployed AI', category: 'MANAGE' },
+    { framework: 'nist-ai-rmf', ref: 'MANAGE 2.4', title: 'Mechanisms to supersede, disengage, or deactivate AI systems', category: 'MANAGE' },
+    { framework: 'nist-ai-rmf', ref: 'MANAGE 4.1', title: 'Post-deployment monitoring plans are implemented', category: 'MANAGE' },
+    { framework: 'nist-ai-rmf', ref: 'MANAGE 4.3', title: 'Incidents and errors are communicated to relevant stakeholders', category: 'MANAGE' },
+  ],
+
+  mappings: [
+    { coreControlId: 'GOV-00', framework: 'nist-ai-rmf', clauseRef: 'GOVERN 2.1', relationship: 'partial', note: 'Both fix accountability/authority; RBI makes the RE accountable for outcomes of all models by mandate.' },
+    { coreControlId: 'GOV-01', framework: 'nist-ai-rmf', clauseRef: 'GOVERN 1.2', relationship: 'partial', note: 'NIST embeds trustworthy-AI in policy; RBI mandates a board-approved MRMF + RMCB approvals.' },
+    { coreControlId: 'GOV-02', framework: 'nist-ai-rmf', clauseRef: 'GOVERN 2.1', relationship: 'partial', note: 'Three lines of defence ≈ documented roles/authority.' },
+    { coreControlId: 'GOV-02', framework: 'nist-ai-rmf', clauseRef: 'MANAGE 2.1', relationship: 'partial', note: 'Senior management allocates resources to manage model risk.' },
+    { coreControlId: 'TIER-01', framework: 'nist-ai-rmf', clauseRef: 'MANAGE 1.2', relationship: 'partial', note: 'Tiering prioritizes risk treatment; RBI adds a strict non-offsetting rule.' },
+    { coreControlId: 'TIER-01', framework: 'nist-ai-rmf', clauseRef: 'MEASURE 1.1', relationship: 'partial', note: 'Tiering inputs ≈ measurement approaches for risk.' },
+    { coreControlId: 'INV-01', framework: 'nist-ai-rmf', clauseRef: 'GOVERN 1.6', relationship: 'partial', note: 'Both require an AI/model inventory; RBI adds a hard "no model unless inventoried" gate + fields.' },
+    { coreControlId: 'INV-04', framework: 'nist-ai-rmf', clauseRef: 'MEASURE 2.8', relationship: 'partial', note: 'Documentation/transparency; RBI ties retention to the inventory.' },
+    { coreControlId: 'LIFE-01', framework: 'nist-ai-rmf', clauseRef: 'MAP 1.1', relationship: 'partial', note: 'Both document intended purpose/context before build.' },
+    { coreControlId: 'LIFE-01', framework: 'nist-ai-rmf', clauseRef: 'MEASURE 2.11', relationship: 'partial', note: 'RBI cost-benefit explicitly weighs bias/fairness at design time.' },
+    { coreControlId: 'LIFE-02', framework: 'nist-ai-rmf', clauseRef: 'MEASURE 2.3', relationship: 'partial', note: 'Performance evaluation; RBI adds independence + 3-month RMCB report SLA.' },
+    { coreControlId: 'LIFE-02', framework: 'nist-ai-rmf', clauseRef: 'MEASURE 2.5', relationship: 'partial', note: 'Validation/verification documented.' },
+    { coreControlId: 'LIFE-03', framework: 'nist-ai-rmf', clauseRef: 'GOVERN 2.1', relationship: 'partial', note: 'Approval authority/thresholds ≈ documented lines of authority; RBI adds RMCB + time-boxed exceptions.' },
+    { coreControlId: 'LIFE-04', framework: 'nist-ai-rmf', clauseRef: 'MANAGE 4.1', relationship: 'partial', note: 'Continuous post-deployment monitoring of all deployed models.' },
+    { coreControlId: 'LIFE-05', framework: 'nist-ai-rmf', clauseRef: 'MANAGE 4.1', relationship: 'partial', note: 'Change management/maintenance; RBI adds a material-change re-validation trigger.' },
+    { coreControlId: 'LIFE-06', framework: 'nist-ai-rmf', clauseRef: 'MANAGE 2.3', relationship: 'partial', note: 'Sustaining deployed AI value ≈ business-continuity/fallback.' },
+    { coreControlId: 'LIFE-06', framework: 'nist-ai-rmf', clauseRef: 'MANAGE 2.4', relationship: 'partial', note: 'Deactivate/decommission mechanisms.' },
+    { coreControlId: 'TPM-01', framework: 'nist-ai-rmf', clauseRef: 'GOVERN 6.1', relationship: 'partial', note: 'Third-party risk policy; RBI mandates independent RE validation + audit rights regardless of tier.' },
+    { coreControlId: 'TPM-01', framework: 'nist-ai-rmf', clauseRef: 'MAP 4.1', relationship: 'partial', note: 'Third-party technology risks mapped.' },
+    { coreControlId: 'AIR-01', framework: 'nist-ai-rmf', clauseRef: 'MAP 3.4', relationship: 'partial', note: 'Human oversight/autonomy mapped; RBI makes autonomy a tiering driver.' },
+    { coreControlId: 'AIR-05', framework: 'nist-ai-rmf', clauseRef: 'MEASURE 2.9', relationship: 'partial', note: 'Explainability/interpretability; RBI sets explicit thresholds + compensating controls.' },
+    { coreControlId: 'AIR-05', framework: 'nist-ai-rmf', clauseRef: 'MEASURE 2.11', relationship: 'partial', note: 'Fairness/bias evaluation.' },
+    { coreControlId: 'AIR-05', framework: 'nist-ai-rmf', clauseRef: 'MEASURE 2.6', relationship: 'partial', note: 'Behavioural/safety risk under stressed/edge/adversarial conditions.' },
+    { coreControlId: 'AIR-13', framework: 'nist-ai-rmf', clauseRef: 'MEASURE 2.7', relationship: 'partial', note: 'Red-teaming ≈ security/resilience evaluation.' },
+    { coreControlId: 'AISEC-01', framework: 'nist-ai-rmf', clauseRef: 'MEASURE 2.7', relationship: 'partial', note: 'Deployment security/resilience baseline.' },
+    { coreControlId: 'AISEC-02', framework: 'nist-ai-rmf', clauseRef: 'MEASURE 2.7', relationship: 'partial', note: 'Prompt-injection/adversarial-input controls on customer-facing interfaces.' },
+    { coreControlId: 'AISEC-02', framework: 'nist-ai-rmf', clauseRef: 'MANAGE 4.1', relationship: 'partial', note: 'Anomalous-usage monitoring on customer-facing AI.' },
+    { coreControlId: 'HO-01', framework: 'nist-ai-rmf', clauseRef: 'MANAGE 2.4', relationship: 'partial', note: 'Kill switch ≈ mechanisms to disengage/deactivate; RBI mandates it explicitly.' },
+    { coreControlId: 'HO-01', framework: 'nist-ai-rmf', clauseRef: 'GOVERN 3.2', relationship: 'partial', note: 'Human-oversight policy.' },
+    { coreControlId: 'HO-02', framework: 'nist-ai-rmf', clauseRef: 'GOVERN 3.2', relationship: 'partial', note: 'Human-factors oversight policy (bias/fatigue/competency).' },
+    { coreControlId: 'HO-02', framework: 'nist-ai-rmf', clauseRef: 'MANAGE 4.3', relationship: 'partial', note: 'Incident/near-miss communication and periodic review.' },
+    { coreControlId: 'CONS-01', framework: 'nist-ai-rmf', clauseRef: 'GOVERN 5.1', relationship: 'partial', note: 'External feedback ≈ grievance redressal; RBI bars consumer-harming models outright.' },
+  ],
+};
