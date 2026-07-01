@@ -69,11 +69,15 @@ const artifacts = new Map();
 for (const fw of frameworks) artifacts.set(`${OUT_DIR}/${fw}.md`, renderPage(fw));
 artifacts.set(JSON_OUT, JSON.stringify(controlCore, null, 2) + '\n');
 
+// Compare on normalized line endings so the drift gate is not tripped by
+// git's autocrlf checking out CRLF while the generator emits LF.
+const normalize = (s) => s.replace(/\r\n/g, '\n');
+
 if (checkMode) {
   const stale = [];
   for (const [path, content] of artifacts) {
     const current = existsSync(path) ? readFileSync(path, 'utf8') : '';
-    if (current !== content) stale.push(path);
+    if (normalize(current) !== normalize(content)) stale.push(path);
   }
   if (stale.length) {
     console.error('Crosswalk artifacts are stale. Run: npm run crosswalk:gen\n  ' + stale.join('\n  '));

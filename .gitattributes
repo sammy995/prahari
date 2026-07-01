@@ -1,0 +1,12 @@
+# Normalize line endings to LF in the repo and working tree on all platforms.
+# The crosswalk generator emits LF; pinning eol=lf keeps the committed
+# artifacts canonical and stops autocrlf from tripping the drift gate.
+* text=auto eol=lf
+
+# Binary assets — never normalize.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
