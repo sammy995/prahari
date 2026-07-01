@@ -8,7 +8,7 @@
 [![npm @prahari/rbi-tiering](https://img.shields.io/npm/v/@prahari/rbi-tiering?label=%40prahari%2Frbi-tiering)](https://www.npmjs.com/package/@prahari/rbi-tiering)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
 
-[Control reference](reference/controls) · [Control mapping](reference/rbi-mrm-2026-control-mapping.md) · [Toolkit](packages/mrm) · [Tiering engine](packages/rbi-tiering) · [Examples](examples) · [Disclaimer](DISCLAIMER.md)
+[Control reference](reference/controls) · [Crosswalk](reference/crosswalk) · [Control mapping](reference/rbi-mrm-2026-control-mapping.md) · [Toolkit](packages/mrm) · [Tiering engine](packages/rbi-tiering) · [Examples](examples) · [Disclaimer](DISCLAIMER.md)
 
 <br/>
 
@@ -26,6 +26,7 @@
 - **A local-first toolkit.** The `prahari` CLI + libraries give you a **model inventory**, automatic **non-offsetting risk tiering** (Para 17–20, 52), **compliance checks**, and an **examiner-ready report** — from a single JSON file. No server, no cloud; your model data never leaves your environment.
 - **A CI gate.** `prahari check` **exits non-zero** on a critical finding (e.g. a high-tier model whose validation report is overdue, Para 33), so non-compliance can block a pipeline — see the [fraud-detection example](examples/fraud-detection).
 - **Evidence an examiner can read.** Every control cites its RBI paragraph; every report states that **your organization** — not the tool, not a vendor — remains accountable (Para 8).
+- **A multi-framework crosswalk.** The same control core mapped to **NIST AI RMF** (ISO 42001 / EU AI Act / SR 11-7 next), with the **deltas** each framework adds called out — see [reference/crosswalk](reference/crosswalk).
 
 **New here?** → [Quick start](#quick-start) · [Examples](examples) · [Control reference](reference/controls)
 
