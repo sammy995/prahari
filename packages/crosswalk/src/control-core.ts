@@ -114,6 +114,36 @@ export const controlCore: ControlCore = {
     { framework: 'sr-11-7', ref: 'V.6', title: 'Documentation', category: 'V Governance' },
     { framework: 'sr-11-7', ref: 'V.7', title: 'Model inventory', category: 'V Governance' },
     { framework: 'sr-11-7', ref: 'VI', title: 'Supervisory review of model risk management', category: 'VI Supervision' },
+
+    // EU AI Act (Regulation (EU) 2024/1689) — high-risk-system obligations.
+    // Conformity/CE/registration articles are intentionally left unmapped: RBI
+    // has no equivalent, so they surface as deltas.
+    { framework: 'eu-ai-act', ref: 'Art. 9', title: 'Risk management system', category: 'Ch.III High-risk' },
+    { framework: 'eu-ai-act', ref: 'Art. 10', title: 'Data and data governance', category: 'Ch.III High-risk' },
+    { framework: 'eu-ai-act', ref: 'Art. 11', title: 'Technical documentation', category: 'Ch.III High-risk' },
+    { framework: 'eu-ai-act', ref: 'Art. 12', title: 'Record-keeping (logging)', category: 'Ch.III High-risk' },
+    { framework: 'eu-ai-act', ref: 'Art. 13', title: 'Transparency and provision of information to deployers', category: 'Ch.III High-risk' },
+    { framework: 'eu-ai-act', ref: 'Art. 14', title: 'Human oversight', category: 'Ch.III High-risk' },
+    { framework: 'eu-ai-act', ref: 'Art. 15', title: 'Accuracy, robustness and cybersecurity', category: 'Ch.III High-risk' },
+    { framework: 'eu-ai-act', ref: 'Art. 17', title: 'Quality management system', category: 'Ch.III High-risk' },
+    { framework: 'eu-ai-act', ref: 'Art. 26', title: 'Obligations of deployers of high-risk AI systems', category: 'Ch.III High-risk' },
+    { framework: 'eu-ai-act', ref: 'Art. 43', title: 'Conformity assessment', category: 'Ch.III Conformity' },
+    { framework: 'eu-ai-act', ref: 'Art. 48', title: 'CE marking of conformity', category: 'Ch.III Conformity' },
+    { framework: 'eu-ai-act', ref: 'Art. 49', title: 'Registration in the EU database', category: 'Ch.III Conformity' },
+    { framework: 'eu-ai-act', ref: 'Art. 50', title: 'Transparency obligations (e.g. disclose AI interaction)', category: 'Ch.IV Transparency' },
+    { framework: 'eu-ai-act', ref: 'Art. 72', title: 'Post-market monitoring', category: 'Ch.IX Monitoring' },
+    { framework: 'eu-ai-act', ref: 'Art. 73', title: 'Reporting of serious incidents', category: 'Ch.IX Monitoring' },
+
+    // MAS FEAT Principles (2018) — Fairness, Ethics, Accountability, Transparency.
+    { framework: 'mas-feat', ref: 'F1', title: 'Fairness: use of data and models is justifiable', category: 'Fairness' },
+    { framework: 'mas-feat', ref: 'F2', title: 'Fairness: minimise unintentional bias; accuracy', category: 'Fairness' },
+    { framework: 'mas-feat', ref: 'F3', title: 'Fairness: regular review of data and models for bias', category: 'Fairness' },
+    { framework: 'mas-feat', ref: 'E1', title: 'Ethics: AIDA use aligned with the RE ethical standards', category: 'Ethics' },
+    { framework: 'mas-feat', ref: 'E2', title: 'Ethics: independent ethics review / governance', category: 'Ethics' },
+    { framework: 'mas-feat', ref: 'A1', title: 'Accountability (internal): senior management is accountable', category: 'Accountability' },
+    { framework: 'mas-feat', ref: 'A2', title: 'Accountability (external): data subjects can enquire and appeal', category: 'Accountability' },
+    { framework: 'mas-feat', ref: 'T1', title: 'Transparency: proactive disclosure of AIDA use', category: 'Transparency' },
+    { framework: 'mas-feat', ref: 'T2', title: 'Transparency: explanations to data subjects', category: 'Transparency' },
   ],
 
   mappings: [
@@ -189,5 +219,33 @@ export const controlCore: ControlCore = {
     { coreControlId: 'TPM-01', framework: 'sr-11-7', clauseRef: 'V.5', relationship: 'partial', note: 'Vendor/external model management; RBI adds mandatory independent validation + audit rights.' },
     { coreControlId: 'INV-04', framework: 'sr-11-7', clauseRef: 'V.6', relationship: 'partial', note: 'Comprehensive model documentation.' },
     { coreControlId: 'INV-01', framework: 'sr-11-7', clauseRef: 'V.7', relationship: 'partial', note: 'Model inventory covering all models.' },
+
+    // EU AI Act mappings. RBI covers the substantive high-risk controls; the EU
+    // conformity-assessment / CE-marking / registration articles have NO core
+    // mapping and appear as deltas (obligations you must satisfy separately).
+    { coreControlId: 'TIER-01', framework: 'eu-ai-act', clauseRef: 'Art. 9', relationship: 'partial', note: 'Risk management system ≈ risk-based tiering; EU requires a continuous, documented RMS.' },
+    { coreControlId: 'LIFE-02', framework: 'eu-ai-act', clauseRef: 'Art. 9', relationship: 'partial', note: 'Testing within the risk-management system.' },
+    { coreControlId: 'LIFE-01', framework: 'eu-ai-act', clauseRef: 'Art. 10', relationship: 'partial', note: 'Data and data governance (quality, bias examination).' },
+    { coreControlId: 'INV-04', framework: 'eu-ai-act', clauseRef: 'Art. 11', relationship: 'partial', note: 'Technical documentation (Annex IV) ≈ model documentation.' },
+    { coreControlId: 'AISEC-01', framework: 'eu-ai-act', clauseRef: 'Art. 12', relationship: 'partial', note: 'Automatic record-keeping / logging.' },
+    { coreControlId: 'CONS-01', framework: 'eu-ai-act', clauseRef: 'Art. 13', relationship: 'partial', note: 'Transparency and information to deployers/users.' },
+    { coreControlId: 'HO-01', framework: 'eu-ai-act', clauseRef: 'Art. 14', relationship: 'partial', note: 'Human oversight incl. the ability to intervene/stop; RBI mandates a kill switch.' },
+    { coreControlId: 'AIR-05', framework: 'eu-ai-act', clauseRef: 'Art. 15', relationship: 'partial', note: 'Accuracy, robustness and cybersecurity; RBI adds explicit explainability thresholds.' },
+    { coreControlId: 'GOV-01', framework: 'eu-ai-act', clauseRef: 'Art. 17', relationship: 'partial', note: 'Quality management system ≈ board-approved MRMF.' },
+    { coreControlId: 'GOV-02', framework: 'eu-ai-act', clauseRef: 'Art. 17', relationship: 'partial', note: 'QMS roles/accountability ≈ three lines of defence.' },
+    { coreControlId: 'TPM-01', framework: 'eu-ai-act', clauseRef: 'Art. 26', relationship: 'partial', note: 'Deployer obligations ≈ RE accountability for third-party models.' },
+    { coreControlId: 'AISEC-02', framework: 'eu-ai-act', clauseRef: 'Art. 50', relationship: 'partial', note: 'Disclosure of AI interaction on customer-facing systems.' },
+    { coreControlId: 'LIFE-04', framework: 'eu-ai-act', clauseRef: 'Art. 72', relationship: 'partial', note: 'Post-market monitoring ≈ ongoing monitoring of deployed models.' },
+    { coreControlId: 'HO-02', framework: 'eu-ai-act', clauseRef: 'Art. 73', relationship: 'partial', note: 'Serious-incident reporting ≈ incident/near-miss review.' },
+
+    // MAS FEAT mappings.
+    { coreControlId: 'AIR-05', framework: 'mas-feat', clauseRef: 'F2', relationship: 'partial', note: 'Minimise unintentional bias; accuracy.' },
+    { coreControlId: 'LIFE-01', framework: 'mas-feat', clauseRef: 'F1', relationship: 'partial', note: 'Justifiable use of data/models, assessed pre-build.' },
+    { coreControlId: 'LIFE-04', framework: 'mas-feat', clauseRef: 'F3', relationship: 'partial', note: 'Regular review of data/models for bias (ongoing monitoring).' },
+    { coreControlId: 'LIFE-01', framework: 'mas-feat', clauseRef: 'E1', relationship: 'partial', note: 'Ethics considered in the cost-benefit assessment.' },
+    { coreControlId: 'GOV-00', framework: 'mas-feat', clauseRef: 'A1', relationship: 'partial', note: 'Internal accountability sits with senior management/board.' },
+    { coreControlId: 'CONS-01', framework: 'mas-feat', clauseRef: 'A2', relationship: 'partial', note: 'External accountability: enquiry/appeal ≈ grievance redressal.' },
+    { coreControlId: 'AISEC-02', framework: 'mas-feat', clauseRef: 'T1', relationship: 'partial', note: 'Proactive disclosure of AI use to customers.' },
+    { coreControlId: 'AIR-05', framework: 'mas-feat', clauseRef: 'T2', relationship: 'partial', note: 'Explanations to data subjects ≈ explainability thresholds.' },
   ],
 };

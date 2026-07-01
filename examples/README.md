@@ -115,7 +115,7 @@ node packages/mrm/dist/cli.js report --file examples/genai-chatbot/inventory.jso
 
 This appends a "Framework view — NIST AI RMF" section (**alignment, not compliance**) plus the deltas NIST adds beyond the Prahari core. See the [crosswalk](../reference/crosswalk). Output: [`report.nist-ai-rmf.md`](genai-chatbot/report.nist-ai-rmf.md).
 
-Swap `--framework iso-42001` for the ISO/IEC 42001 view: [`report.iso-42001.md`](genai-chatbot/report.iso-42001.md), or `--framework sr-11-7` for the SR 11-7 view: [`report.sr-11-7.md`](genai-chatbot/report.sr-11-7.md).
+Swap the framework for another view: `--framework iso-42001` ([report](genai-chatbot/report.iso-42001.md)) · `--framework sr-11-7` ([report](genai-chatbot/report.sr-11-7.md)) · `--framework eu-ai-act` ([report](genai-chatbot/report.eu-ai-act.md), which surfaces the EU conformity-assessment deltas RBI has no equivalent for) · `--framework mas-feat`.
 
 ## credit-scoring
 

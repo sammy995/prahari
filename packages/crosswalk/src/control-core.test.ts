@@ -38,4 +38,16 @@ describe('controlCore data', () => {
     expect(cov.mappedClauses.length).toBeGreaterThan(0);
     expect(cov.deltaClauses.length).toBeGreaterThan(0);
   });
+
+  it('has EU AI Act clauses and surfaces the conformity-assessment delta', () => {
+    const cov = deriveCoverage(controlCore, 'eu-ai-act');
+    expect(cov.mappedClauses.length).toBeGreaterThan(0);
+    expect(cov.deltaClauses.map((c) => c.ref)).toContain('Art. 43'); // conformity assessment: no RBI equivalent
+  });
+
+  it('has MAS FEAT clauses and at least one delta (honesty check)', () => {
+    const cov = deriveCoverage(controlCore, 'mas-feat');
+    expect(cov.mappedClauses.length).toBeGreaterThan(0);
+    expect(cov.deltaClauses.length).toBeGreaterThan(0);
+  });
 });

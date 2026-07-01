@@ -99,6 +99,8 @@ const KNOWN_FRAMEWORKS: Record<string, { id: Framework; label: string }> = {
   'nist-ai-rmf': { id: 'nist-ai-rmf', label: 'NIST AI RMF' },
   'iso-42001': { id: 'iso-42001', label: 'ISO/IEC 42001' },
   'sr-11-7': { id: 'sr-11-7', label: 'SR 11-7' },
+  'eu-ai-act': { id: 'eu-ai-act', label: 'EU AI Act' },
+  'mas-feat': { id: 'mas-feat', label: 'MAS FEAT' },
 };
 
 /**
