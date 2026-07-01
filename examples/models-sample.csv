@@ -1,0 +1,5 @@
+name,type,use,owner,developer,validator,approver,materiality,complexity,autonomy,third_party,ai,consumer_facing,active
+Retail Scorecard,ml,Score retail loan applicants,priya,arjun,meena,rao,3,2,,false,,false,true
+Pricing Sheet,spreadsheet,Derive lending rate,eve,frank,grace,heidi,3,1,,false,false,false,true
+Support Copilot,genai,Answer customer queries,cx,aiteam,airisk,cro,3,3,3,false,,true,true
+Bureau Score,ml,Third-party credit bureau score,priya,vendorco,meena,rao,3,2,,true,,false,true

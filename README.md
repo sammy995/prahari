@@ -115,7 +115,7 @@ The [control reference](reference/controls) covers the RBI guidance **end to end
 
 **Next**
 - More crosswalk frameworks: **EU AI Act · MAS FEAT** (one data edit + regenerate each).
-- Toolkit: `update` command, **CSV import**, HTML/PDF report export; optional API.
+- Toolkit: HTML/PDF report export; optional API. (`import` CSV bulk-load and `update` shipped.)
 - Refine every mapping against the final RBI notification when issued.
 
 ## Principles

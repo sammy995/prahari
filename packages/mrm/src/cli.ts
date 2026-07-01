@@ -6,16 +6,19 @@
  *   prahari init
  *   prahari add --name .. --type ml --use ".." --owner a --developer b --validator c --approver d \
  *               [--materiality 1-3] [--complexity 1-3] [--autonomy 1-3] [--third-party] [--consumer-facing] [--active]
+ *   prahari import --csv models.csv
+ *   prahari update --id <id> [--materiality 1-3] [--active|--inactive|--decommission] ...
  *   prahari list
  *   prahari check
- *   prahari report [--org "Acme Bank"] [--out report.md]
+ *   prahari report [--org "Acme Bank"] [--out report.md] [--framework nist-ai-rmf|iso-42001|sr-11-7]
  */
 
-import { writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { Command } from 'commander';
 import type { FactorScore } from '@prahari/rbi-tiering';
 import { LifecycleState, ModelType, type ModelTieringInputs } from './model.js';
-import { addModel, listModels } from './inventory.js';
+import { addModel, listModels, updateModel, decommissionModel } from './inventory.js';
+import { importModelsCsv } from './csv.js';
 import { runChecks } from './checks.js';
 import { renderReport, renderFrameworkReport } from './report.js';
 import { DEFAULT_STORE_PATH, loadInventory, saveInventory } from './store.js';
@@ -71,6 +74,62 @@ program
     });
     saveInventory(inv, opts.file);
     console.log(`Added "${m.name}" (${m.id}) — tier: ${m.tier ?? 'untiered'}`);
+  });
+
+program
+  .command('import')
+  .description('Bulk-import models from a CSV file (header row required)')
+  .requiredOption('--csv <path>', 'CSV file: name,type,use,owner,developer,validator,approver,materiality,complexity,autonomy,third_party,ai,consumer_facing,active')
+  .option('-f, --file <path>', 'inventory file', DEFAULT_STORE_PATH)
+  .action((opts) => {
+    const inv = loadInventory(opts.file);
+    const res = importModelsCsv(inv, readFileSync(opts.csv, 'utf8'));
+    saveInventory(inv, opts.file);
+    console.log(`Imported ${res.added.length} model(s) into ${opts.file}.`);
+    for (const e of res.errors) console.error(`  [skipped CSV line ${e.line}] ${e.message}`);
+    if (res.errors.length) process.exitCode = 1;
+  });
+
+program
+  .command('update')
+  .description('Update fields of an existing model (re-tiers if inputs change)')
+  .requiredOption('--id <id>')
+  .option('--use <intendedUse>')
+  .option('--materiality <1-3>')
+  .option('--complexity <1-3>')
+  .option('--autonomy <1-3>')
+  .option('--third-party', 'mark as third-party')
+  .option('--consumer-facing', 'mark as consumer-facing')
+  .option('--active', 'set lifecycle to active')
+  .option('--inactive', 'set lifecycle to inactive')
+  .option('--decommission', 'decommission (retained 10 years, Para 23)')
+  .option('-f, --file <path>', 'inventory file', DEFAULT_STORE_PATH)
+  .action((opts) => {
+    const inv = loadInventory(opts.file);
+    if (opts.decommission) {
+      const m = decommissionModel(inv, opts.id);
+      saveInventory(inv, opts.file);
+      console.log(`Decommissioned "${m.name}" (${m.id}) — retained until ${new Date(new Date(m.decommissionedAt!).setFullYear(new Date(m.decommissionedAt!).getFullYear() + 10)).getFullYear()} (Para 23).`);
+      return;
+    }
+    const tieringInputs: Partial<ModelTieringInputs> = {};
+    if (opts.materiality) tieringInputs.materiality = Number(opts.materiality) as FactorScore;
+    if (opts.complexity) tieringInputs.complexity = Number(opts.complexity) as FactorScore;
+    if (opts.autonomy) tieringInputs.autonomy = Number(opts.autonomy) as FactorScore;
+    const lifecycle = opts.active
+      ? LifecycleState.Active
+      : opts.inactive
+        ? LifecycleState.Inactive
+        : undefined;
+    const m = updateModel(inv, opts.id, {
+      intendedUse: opts.use,
+      isThirdParty: opts.thirdParty ? true : undefined,
+      consumerFacing: opts.consumerFacing ? true : undefined,
+      lifecycle,
+      tieringInputs: Object.keys(tieringInputs).length ? tieringInputs : undefined,
+    });
+    saveInventory(inv, opts.file);
+    console.log(`Updated "${m.name}" (${m.id}) — tier: ${m.tier ?? 'untiered'}, lifecycle: ${m.lifecycle}`);
   });
 
 program
