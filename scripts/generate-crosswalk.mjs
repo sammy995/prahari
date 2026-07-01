@@ -3,9 +3,13 @@ import { controlCore, deriveCoverage, validateControlCore } from '@prahari/cross
 
 const checkMode = process.argv.includes('--check');
 const OUT_DIR = 'reference/crosswalk';
-const MD = `${OUT_DIR}/nist-ai-rmf.md`;
 const JSON_OUT = `${OUT_DIR}/control-core.json`;
-const fw = 'nist-ai-rmf';
+
+// Per-framework presentation metadata. Frameworks not listed fall back to the id.
+const FRAMEWORK_META = {
+  'nist-ai-rmf': { label: 'NIST AI RMF 1.0', source: 'NIST AI RMF 1.0' },
+  'iso-42001': { label: 'ISO/IEC 42001:2023', source: 'ISO/IEC 42001:2023 (Annex A)' },
+};
 
 const errors = validateControlCore(controlCore);
 if (errors.length) {
@@ -13,10 +17,12 @@ if (errors.length) {
   process.exit(1);
 }
 
-const cov = deriveCoverage(controlCore, fw);
 const byCore = (id) => controlCore.coreControls.find((c) => c.id === id);
+const frameworks = [...new Set(controlCore.frameworkClauses.map((c) => c.framework))].sort();
 
-function renderMd() {
+function renderPage(fw) {
+  const meta = FRAMEWORK_META[fw] ?? { label: fw, source: fw };
+  const cov = deriveCoverage(controlCore, fw);
   const mapRows = controlCore.mappings
     .filter((m) => m.framework === fw)
     .map((m) => {
@@ -30,48 +36,52 @@ function renderMd() {
     .map((c) => `| ${c.ref} | ${c.title} | _No Prahari core control — assess separately._ |`)
     .join('\n');
 
-  return `# Crosswalk — NIST AI RMF 1.0
+  return `# Crosswalk — ${meta.label}
 
 [← Crosswalk](README.md) · Generated from \`@prahari/crosswalk\` — do not edit by hand.
 
-> Not legal advice; not a NIST or RBI publication; no guarantee of compliance. Mappings are an interpretation to verify against source texts.
+> Not legal advice; not a ${meta.source} or RBI publication; no guarantee of compliance. Mappings are an interpretation to verify against source texts.
 
-Implementing the Prahari Control Core covers the **shared backbone** of NIST AI RMF. It does **not** make you "NIST compliant"; the deltas below are obligations the core does not cover.
+Implementing the Prahari Control Core covers the **shared backbone** of ${meta.label}. It does **not** make you "${meta.label} compliant"; the deltas below are obligations the core does not cover.
 
-**Coverage:** ${cov.mappedClauses.length} NIST subcategories mapped · ${cov.deltaClauses.length} deltas · ${controlCore.coreControls.length} core controls.
+**Coverage:** ${cov.mappedClauses.length} ${meta.label} clauses mapped · ${cov.deltaClauses.length} deltas · ${controlCore.coreControls.length} core controls.
 
-## Core control → NIST AI RMF
+## Core control → ${meta.label}
 
-| Prahari Control Core | RBI | NIST AI RMF 1.0 | Relationship | Notes |
+| Prahari Control Core | RBI | ${meta.label} | Relationship | Notes |
 | --- | --- | --- | --- | --- |
 ${mapRows}
 
-## Deltas — NIST obligations not covered by the core
+## Deltas — ${meta.label} obligations not covered by the core
 
-| NIST AI RMF | Title | Status |
+| ${meta.label} | Title | Status |
 | --- | --- | --- |
 ${deltaRows || '| — | — | _No deltas in the considered set._ |'}
 
 ---
 
-*Cite as:* **Prahari Crosswalk — NIST AI RMF** · part of [Prahari](https://github.com/sammy995/prahari) (Apache-2.0). Aligned with the RBI Draft Guidance (2026) and NIST AI RMF 1.0; re-verify against source texts.
+*Cite as:* **Prahari Crosswalk — ${meta.label}** · part of [Prahari](https://github.com/sammy995/prahari) (Apache-2.0). Aligned with the RBI Draft Guidance (2026) and ${meta.source}; re-verify against source texts.
 `;
 }
 
-const md = renderMd();
-const json = JSON.stringify(controlCore, null, 2) + '\n';
+// Build the full set of artifacts (path -> content).
+const artifacts = new Map();
+for (const fw of frameworks) artifacts.set(`${OUT_DIR}/${fw}.md`, renderPage(fw));
+artifacts.set(JSON_OUT, JSON.stringify(controlCore, null, 2) + '\n');
 
 if (checkMode) {
-  const curMd = existsSync(MD) ? readFileSync(MD, 'utf8') : '';
-  const curJson = existsSync(JSON_OUT) ? readFileSync(JSON_OUT, 'utf8') : '';
-  if (curMd !== md || curJson !== json) {
-    console.error('Crosswalk artifacts are stale. Run: npm run crosswalk:gen');
+  const stale = [];
+  for (const [path, content] of artifacts) {
+    const current = existsSync(path) ? readFileSync(path, 'utf8') : '';
+    if (current !== content) stale.push(path);
+  }
+  if (stale.length) {
+    console.error('Crosswalk artifacts are stale. Run: npm run crosswalk:gen\n  ' + stale.join('\n  '));
     process.exit(1);
   }
-  console.log('Crosswalk artifacts up to date.');
+  console.log(`Crosswalk artifacts up to date (${artifacts.size} files, ${frameworks.length} frameworks).`);
 } else {
   if (!existsSync(OUT_DIR)) mkdirSync(OUT_DIR, { recursive: true });
-  writeFileSync(MD, md);
-  writeFileSync(JSON_OUT, json);
-  console.log(`Wrote ${MD} and ${JSON_OUT}`);
+  for (const [path, content] of artifacts) writeFileSync(path, content);
+  console.log(`Wrote ${artifacts.size} files for ${frameworks.length} frameworks: ${frameworks.join(', ')}`);
 }

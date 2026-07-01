@@ -106,6 +106,8 @@ node packages/mrm/dist/cli.js report --file examples/genai-chatbot/inventory.jso
 
 This appends a "Framework view — NIST AI RMF" section (**alignment, not compliance**) plus the deltas NIST adds beyond the Prahari core. See the [crosswalk](../reference/crosswalk). Output: [`report.nist-ai-rmf.md`](genai-chatbot/report.nist-ai-rmf.md).
 
+Swap `--framework iso-42001` for the ISO/IEC 42001 view: [`report.iso-42001.md`](genai-chatbot/report.iso-42001.md).
+
 ## credit-scoring
 
 A bank's credit-decision estate — an application scorecard, a behavioural (limit/repricing) scorecard, a **third-party** bureau score, and a collections-propensity model. Three are *high* tier: credit decisions are inherently material and consumer-facing.

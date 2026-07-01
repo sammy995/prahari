@@ -97,6 +97,7 @@ function formatCounts(counts: Record<string, number>): string {
 
 const KNOWN_FRAMEWORKS: Record<string, { id: Framework; label: string }> = {
   'nist-ai-rmf': { id: 'nist-ai-rmf', label: 'NIST AI RMF' },
+  'iso-42001': { id: 'iso-42001', label: 'ISO/IEC 42001' },
 };
 
 /**

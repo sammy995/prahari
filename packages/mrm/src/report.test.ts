@@ -46,6 +46,13 @@ describe('renderFrameworkReport (NIST AI RMF)', () => {
     expect(md.toLowerCase()).not.toContain('compliant with nist');
   });
 
+  it('renders an ISO/IEC 42001 view (alignment, not compliance)', () => {
+    const md = renderFrameworkReport(emptyInventory(), 'iso-42001', { organisation: 'Demo' });
+    expect(md).toContain('ISO/IEC 42001');
+    expect(md).toContain('Deltas');
+    expect(md.toLowerCase()).not.toContain('compliant with iso');
+  });
+
   it('throws on an unknown framework', () => {
     expect(() => renderFrameworkReport(emptyInventory(), 'made-up')).toThrow();
   });

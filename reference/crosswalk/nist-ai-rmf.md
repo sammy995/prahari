@@ -2,13 +2,13 @@
 
 [← Crosswalk](README.md) · Generated from `@prahari/crosswalk` — do not edit by hand.
 
-> Not legal advice; not a NIST or RBI publication; no guarantee of compliance. Mappings are an interpretation to verify against source texts.
+> Not legal advice; not a NIST AI RMF 1.0 or RBI publication; no guarantee of compliance. Mappings are an interpretation to verify against source texts.
 
-Implementing the Prahari Control Core covers the **shared backbone** of NIST AI RMF. It does **not** make you "NIST compliant"; the deltas below are obligations the core does not cover.
+Implementing the Prahari Control Core covers the **shared backbone** of NIST AI RMF 1.0. It does **not** make you "NIST AI RMF 1.0 compliant"; the deltas below are obligations the core does not cover.
 
-**Coverage:** 23 NIST subcategories mapped · 4 deltas · 22 core controls.
+**Coverage:** 23 NIST AI RMF 1.0 clauses mapped · 4 deltas · 22 core controls.
 
-## Core control → NIST AI RMF
+## Core control → NIST AI RMF 1.0
 
 | Prahari Control Core | RBI | NIST AI RMF 1.0 | Relationship | Notes |
 | --- | --- | --- | --- | --- |
@@ -45,9 +45,9 @@ Implementing the Prahari Control Core covers the **shared backbone** of NIST AI 
 | `HO-02` Human factors | Para 61, 62, 63 | MANAGE 4.3 — Incidents and errors are communicated to relevant stakeholders | partial | Incident/near-miss communication and periodic review. |
 | `CONS-01` Consumer protection | Para 25 | GOVERN 5.1 — Mechanisms to collect and consider external feedback | partial | External feedback ≈ grievance redressal; RBI bars consumer-harming models outright. |
 
-## Deltas — NIST obligations not covered by the core
+## Deltas — NIST AI RMF 1.0 obligations not covered by the core
 
-| NIST AI RMF | Title | Status |
+| NIST AI RMF 1.0 | Title | Status |
 | --- | --- | --- |
 | GOVERN 1.1 | Legal and regulatory requirements involving AI are understood, managed, documented | _No Prahari core control — assess separately._ |
 | GOVERN 6.2 | Contingency processes for failures of third-party resources | _No Prahari core control — assess separately._ |
@@ -56,4 +56,4 @@ Implementing the Prahari Control Core covers the **shared backbone** of NIST AI 
 
 ---
 
-*Cite as:* **Prahari Crosswalk — NIST AI RMF** · part of [Prahari](https://github.com/sammy995/prahari) (Apache-2.0). Aligned with the RBI Draft Guidance (2026) and NIST AI RMF 1.0; re-verify against source texts.
+*Cite as:* **Prahari Crosswalk — NIST AI RMF 1.0** · part of [Prahari](https://github.com/sammy995/prahari) (Apache-2.0). Aligned with the RBI Draft Guidance (2026) and NIST AI RMF 1.0; re-verify against source texts.

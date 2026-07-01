@@ -26,4 +26,10 @@ describe('controlCore data', () => {
     expect(cov.mappedClauses.length).toBeGreaterThan(0);
     expect(cov.deltaClauses.length).toBeGreaterThan(0);
   });
+
+  it('has ISO 42001 clauses and at least one delta (honesty check)', () => {
+    const cov = deriveCoverage(controlCore, 'iso-42001');
+    expect(cov.mappedClauses.length).toBeGreaterThan(0);
+    expect(cov.deltaClauses.length).toBeGreaterThan(0);
+  });
 });

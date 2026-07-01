@@ -15,7 +15,8 @@ Each mapping carries a **relationship**: `equivalent` (genuine 1:1) or `partial`
 | Framework | Status |
 | --- | --- |
 | [NIST AI RMF 1.0](nist-ai-rmf.md) | ✅ mapped |
-| ISO 42001 · EU AI Act · SR 11-7 · MAS FEAT | planned |
+| [ISO/IEC 42001:2023](iso-42001.md) | ✅ mapped |
+| EU AI Act · SR 11-7 · MAS FEAT | planned |
 
 The mapping pages are **generated** from the `@prahari/crosswalk` package (`control-core.json` is the machine-readable artifact); do not edit them by hand. Regenerate with `npm run crosswalk:gen`.
 
