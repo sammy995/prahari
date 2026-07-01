@@ -9,6 +9,7 @@ const JSON_OUT = `${OUT_DIR}/control-core.json`;
 const FRAMEWORK_META = {
   'nist-ai-rmf': { label: 'NIST AI RMF 1.0', source: 'NIST AI RMF 1.0' },
   'iso-42001': { label: 'ISO/IEC 42001:2023', source: 'ISO/IEC 42001:2023 (Annex A)' },
+  'sr-11-7': { label: 'SR 11-7', source: 'Federal Reserve SR 11-7 (2011)' },
 };
 
 const errors = validateControlCore(controlCore);
