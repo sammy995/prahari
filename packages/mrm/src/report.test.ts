@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { emptyInventory, LifecycleState, ModelType } from './model.js';
 import { addModel } from './inventory.js';
-import { renderReport } from './report.js';
+import { renderReport, renderFrameworkReport } from './report.js';
 
 describe('renderReport', () => {
   it('renders headline sections and the accountability disclaimer', () => {
@@ -26,5 +26,27 @@ describe('renderReport', () => {
     const md = renderReport(emptyInventory(), { now: new Date('2026-06-27') });
     expect(md).toMatch(/Total models: \*\*0\*\*/);
     expect(md).toMatch(/Inventory is empty/);
+  });
+});
+
+describe('renderFrameworkReport (NIST AI RMF)', () => {
+  it('renders a framework view with a deltas section and no compliance claim', () => {
+    const inv = emptyInventory();
+    addModel(inv, {
+      name: 'Scorecard',
+      type: ModelType.Ml,
+      intendedUse: 'Score applicants',
+      roles: { owner: 'a', developer: 'b', validator: 'c', approver: 'd' },
+      lifecycle: LifecycleState.Active,
+      tieringInputs: { materiality: 3, complexity: 3 },
+    });
+    const md = renderFrameworkReport(inv, 'nist-ai-rmf', { organisation: 'Demo' });
+    expect(md).toContain('NIST AI RMF');
+    expect(md).toContain('Deltas');
+    expect(md.toLowerCase()).not.toContain('compliant with nist');
+  });
+
+  it('throws on an unknown framework', () => {
+    expect(() => renderFrameworkReport(emptyInventory(), 'made-up')).toThrow();
   });
 });

@@ -3,6 +3,7 @@
  * inventory + checks. Maps to Para 12 (RMCB oversight) and Para 33 reporting.
  */
 
+import { controlCore, deriveCoverage, type Framework } from '@prahari/crosswalk';
 import { runChecks, summarizeFindings, type Finding } from './checks.js';
 import { LifecycleState, type Inventory, type ModelRecord } from './model.js';
 
@@ -92,4 +93,54 @@ function formatCounts(counts: Record<string, number>): string {
   const entries = Object.entries(counts);
   if (entries.length === 0) return '—';
   return entries.map(([k, v]) => `${k}=${v}`).join(', ');
+}
+
+const KNOWN_FRAMEWORKS: Record<string, { id: Framework; label: string }> = {
+  'nist-ai-rmf': { id: 'nist-ai-rmf', label: 'NIST AI RMF' },
+};
+
+/**
+ * Render the standard report plus a read-only framework-view section that maps
+ * the RE's RBI control set to another framework (alignment, NOT compliance).
+ */
+export function renderFrameworkReport(
+  inv: Inventory,
+  framework: string,
+  opts: ReportOptions = {},
+): string {
+  const known = KNOWN_FRAMEWORKS[framework];
+  if (!known) {
+    throw new Error(
+      `Unknown framework "${framework}". Known: ${Object.keys(KNOWN_FRAMEWORKS).join(', ')}`,
+    );
+  }
+  const cov = deriveCoverage(controlCore, known.id);
+  const mapRows = controlCore.mappings
+    .filter((m) => m.framework === known.id)
+    .map((m) => {
+      const c = controlCore.coreControls.find((x) => x.id === m.coreControlId);
+      const name = c ? `${c.id} ${c.title}` : m.coreControlId;
+      const paras = c ? `Para ${c.rbiParas.join(', ')}` : '—';
+      return `| ${name} | ${paras} | ${m.clauseRef} | ${m.relationship} |`;
+    })
+    .join('\n');
+  const deltaRows = cov.deltaClauses.map((c) => `| ${c.ref} | ${c.title} |`).join('\n');
+
+  const section = `
+
+## 5. Framework view — ${known.label} (alignment, not compliance)
+
+> This maps your RBI control set to ${known.label}. It is **not** a ${known.label} compliance attestation; the deltas below are not covered by the Prahari core.
+
+| Prahari Control Core | RBI | ${known.label} | Relationship |
+| --- | --- | --- | --- |
+${mapRows}
+
+### Deltas — ${known.label} obligations not covered by the core
+
+| ${known.label} | Title |
+| --- | --- |
+${deltaRows || '| — | _none in the considered set_ |'}
+`;
+  return renderReport(inv, opts) + section;
 }
