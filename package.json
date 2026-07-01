@@ -8,6 +8,12 @@
     "typecheck": "npm run typecheck -w packages/rbi-tiering && npm run typecheck -w packages/crosswalk && npm run typecheck -w packages/mrm",
     "crosswalk:gen": "node scripts/generate-crosswalk.mjs",
     "crosswalk:check": "node scripts/generate-crosswalk.mjs --check",
-    "links:check": "node scripts/check-links.mjs"
+    "links:check": "node scripts/check-links.mjs",
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.3"
   }
 }

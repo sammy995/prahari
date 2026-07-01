@@ -49,3 +49,7 @@ packages/core/
 packages/sdk/
 docker-compose.yml
 .env.example
+
+# VitePress build artifacts
+.vitepress/dist/
+.vitepress/cache/
